@@ -15,7 +15,7 @@ def 층별안내():
   try:
     floor = int(input('층 :'))
     sql = 'select * from floors where floor = %s'
-    curs.execute(sql, floor)
+    curs.execute(sql, (floor,))
     result = curs.fetchall()
     if result:
       for row in result:
@@ -28,7 +28,7 @@ def 이름검색(name):
   try:
     name = input('시설명 :')
     sql = 'select * from floors where name = %s'
-    curs.execute(sql, name, type)
+    curs.execute(sql, (name,))
     result = curs.fetchall()
     if result:
       print(result)
@@ -42,7 +42,7 @@ def 시설타입검색():
   try:
     type = input('시설타입 :')
     sql = 'select * from floors where type = %s'
-    curs.execute(sql, type)
+    curs.execute(sql, (type,))
     result = curs.fetchall()
     if result:
       print(result)
@@ -59,7 +59,7 @@ def 시설추가():
     add_type = input('시설타입 :')
     
     sql = 'insert into floors (floor, name, type) values (%s,%s,%s)'
-    curs.execute(sql, add_floor, add_name, add_type)
+    curs.execute(sql, (add_floor, add_name, add_type))
     conn.commit()
     
     sql = 'select * from floors where name = %d'
