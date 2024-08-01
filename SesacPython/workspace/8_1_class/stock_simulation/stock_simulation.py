@@ -1,4 +1,4 @@
-from util import in, plot_line_graph 
+from util import company_lists, plot_line_graph 
 from random import random
 import os 
 from collections import defaultdict
