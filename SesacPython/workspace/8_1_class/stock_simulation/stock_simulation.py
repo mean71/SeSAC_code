@@ -1,12 +1,12 @@
-from util import company_lists, plot_line_graph 
+from util import company_lists, plot_line_graph
 from random import random
-import os 
+import os
 from collections import defaultdict
 
 class Stock:
     HISTORY_DIR = 'stock_history'
     def __init__(self, name):
-        self.name = name 
+        self.name = name
         self.initial_price = 10000
         self.price_history = [10000]
         self.momentum = 0
@@ -28,8 +28,8 @@ class Stock:
                 self.momentum = self.momentum_lower_bound
             elif self.momentum_lower_bound > self.momentum:
                 self.momentum = self.momentum_lower_bound
-            delta = random() - 0.5 + self.momentum + market.momentum 
-            self.price += self.momentum * self.price 
+            delta = random() - 0.5 + self.momentum + market.momentum
+            self.price += self.momentum * self.price
         self.price_history.append(self.price)
 
     def plot_history(self):
@@ -50,9 +50,9 @@ class StockMarket:
 
 class Investor:
     def __init__(self, name = 'investor1', initial_asset = 10000000, strategy = lambda investor, market:None):
-        self.name = name 
+        self.name = name
         self.asset = initial_asset
-        self.cash = initial_asset 
+        self.cash = initial_asset
         self.asset_history = [initial_asset]
         self.portfolio = defaultdict(float)
         self.strategy = strategy
@@ -66,8 +66,8 @@ class Investor:
 
     def sell(self, stock, amount):
         if stock in self.portfolio and self.portfolio[stock] >= amount:
-            self.portfolio[stock] -= amount 
-            self.cash += stock.price * amount 
+            self.portfolio[stock] -= amount
+            self.cash += stock.price * amount
         else:
             print('Not enough stocks')
 
@@ -76,7 +76,7 @@ class Investor:
         stock_asset = 0
         for stock, amount in self.portfolio:
             stock_asset += stock.price * amount
-        self.asset = stock_asset + self.cash 
+        self.asset = stock_asset + self.cash
         self.asset_history.append(self.asset)
 
     def plot_history(self):
