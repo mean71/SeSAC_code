@@ -3,6 +3,7 @@ import string
 import matplotlib.pyplot as plt
 
 def generate_random_word(length): # 길이를 입력받아 for문에 순환, 자음/모음 번갈아서 랜덤으로 합쳐 첫글자는 .capitatlize로 출력
+    vowels = 'aeiou'
     consonants = "".join(set(string.ascii_lowercase) - set(vowels)) # 자음문자열을 join으로 합쳐서 대입 # string.ascii_lowercase #set()으로 문자열의 순서를 없애고 나눔 #string내부의 소문자 알파벳을 저장해둔 문자열 - 모음문자열
     word = ""
     
