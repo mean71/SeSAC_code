@@ -32,14 +32,14 @@ class Stock:
             self.price += self.momentum * self.price
         self.price_history.append(self.price)
 
-    def plot_history(self):
+    def plot_history(self): # 주식의 가격이력을 플로팅하고 저장
         if not os.path.exists(Stock.HISTORY_DIR):
-            os.makedirs(Stock.HISTORY_DIR)
-        
+            os.makedirs(Stock.HISTORY_DIR) # 플롯을 저장할 디렉토리가 없으면 생성
+        # 가격 이력 플로팅하고 저장하는 함수 호출 ㄱ
         plot_line_graph(self.price_history, save_to = f'stock_history/{self.name}.png', title = f'Price graph of {self.name}', x_label = 'time', y_label = '{self.name} price')
          
 
-class StockMarket:
+class StockMarket:  # 주식시장
     def __init__(self, listed_stocks):
         self.listed_stocks = listed_stocks
         self.momentum = 0.01
@@ -79,7 +79,7 @@ class Investor:
         self.asset = stock_asset + self.cash
         self.asset_history.append(self.asset)
 
-    def plot_history(self):
+    def plot_history(self): # asset 이력을 플로팅하고 저장하는 함수 호출 ㄱ
         plot_line_graph(self.asset_history, save_to = f'{self.name}.png', title = f'Asset History of {self.name}', x_label = 'time', y_label = '{self.name} Asset')
 
 def simulate(strategy = lambda investor, market:None, n_steps = 100, n_company = 10):
@@ -112,7 +112,35 @@ def simulate(strategy = lambda investor, market:None, n_steps = 100, n_company =
     investor.plot_history()
 # 하단 코드를 짜맞춰서 완성하는 특제 클래스 코딩문제
 def my_strategy(investor, market):
+    
     print(f'{investor.name} on market')
+    
+    
+    day = 7
+    top_stock = None
+    max_increase = float('-inf')
+    
+    for stock in market.listed_stocks:
+        if len(stock.price_history) > day:
+            initial_price = stock.price_history[-day]
+            current_price = stock.price
+            increase = current_price - initial_price
+            
+            if increase > max_increase:
+                max_increase = increase
+                top_stock = stock
+
+    if top_stock:
+        amount_to_buy = min(100, investor.cash // top_stock.price)
+        if amount_to_buy > 0:
+            investor.buy(top_stock, amount_to_buy)
+    
+    for stock in list(investor.portfolio.keys()):
+        if len(stock.price_history) > day:
+            initial_price = stock.price_history[-day]
+            if stock.price < initial_price:
+                investor.sell(stock, investor.portfolio[stock])
+    
 
 if __name__ == '__main__':
     simulate(strategy = my_strategy)
