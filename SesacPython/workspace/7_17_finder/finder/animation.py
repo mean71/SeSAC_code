@@ -146,5 +146,4 @@ def check_collision(angle = 0, dt = dt,):   # get_angle 에서 호출
 if __name__ == '__main__':
     from finder import manual_finder
     
-    print(manual_finder(check_collision))
-    
+    print(manual_finder(check_collision)) 
