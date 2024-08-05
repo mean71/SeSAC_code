@@ -26,12 +26,12 @@ pyramid1(N)
 #  * * * * 
 # * * * * * 
 # --------------------------------------------
-N=int(input())
 def pyramid2(n):
     for n in range(1,N+1):
         print( ' '*(N-n), end='' )
         print( '* '*n)
     pass
+N=int(input())
 pyramid2(N)
 # write your code here 
 
@@ -45,10 +45,11 @@ pyramid2(N)
 # A B C D E 
 # --------------------------------------------
 def pyramid3(n):
+        
     pass
 # write your code here
 
-# -------------------------------------------- 
+# --------------------------------------------
 # 4) 피라미드 찍어보기 - 4
 # 다음 패턴의 높이를 받아, 다음 패턴을 프린트하는 함수 pyramid4를 짜 보세요.
 #       1 
@@ -58,6 +59,7 @@ def pyramid3(n):
 #   1 4 6 4 1
 # --------------------------------------------
 def pyramid4(n):
+
     pass
 # write your code here
 
@@ -69,7 +71,7 @@ def pyramid4(n):
 #       *   *
 #      * * * *
 #     *       * 
-#    * *     * *
+#    * *     * * 
 #   *   *   *   * 
 #  * * * * * * * * 
 # 
@@ -85,13 +87,14 @@ def pyramid4(n):
 #         *               *   
 #        * *             * *  
 #       *   *           *   * 
-#      * * * *         * * * *
-#     *       *       *       *  
-#    * *     * *     * *     * *
+#      * * * *         * * * * 
+#     *       *       *       * 
+#    * *     * *     * *     * * 
 #   *   *   *   *   *   *   *   * 
 #  * * * * * * * * * * * * * * * *
 # --------------------------------------------
 def sierpinski_triangle(n):
+
     pass
 # write your code here
 
@@ -104,6 +107,7 @@ def sierpinski_triangle(n):
 # lst -> [lst[0], f(lst[0], lst[1]), f(lst[2], f(lst[1], lst[0])), ...] 
 # --------------------------------------------
 def accumulate(lst, function = lambda x, y: x+y):
+
     pass
 # write your code here
 
@@ -116,6 +120,7 @@ def accumulate(lst, function = lambda x, y: x+y):
 #     >> [('a', 'b', 1), (3, 6, 1), (1, 3, 7)]
 # --------------------------------------------
 def batched(lst, n):
+
     pass
 # write your code here
 
@@ -128,6 +133,7 @@ def batched(lst, n):
 #         (3,4), (3,5), (3,6),] 
 # --------------------------------------------
 def product(args):
+
     pass
 # write your code here
 
@@ -144,6 +150,7 @@ def product(args):
 #         (5,1), (5,2), (5,3), (5,4),]
 # --------------------------------------------
 def permutations(lst, r):
+
     pass
 # write your code here
 
@@ -159,6 +166,7 @@ def permutations(lst, r):
 #         (4,5), ]
 # --------------------------------------------
 def combination(lst, r):
+
     pass
 # write your code here
 
@@ -173,5 +181,6 @@ def combination(lst, r):
 #         (5,5), ]
 # --------------------------------------------
 def combination_with_duplicate(lst, r):
+
     pass
 # write your code here
