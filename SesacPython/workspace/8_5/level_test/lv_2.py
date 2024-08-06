@@ -45,8 +45,18 @@ pyramid2(N)
 # A B C D E 
 # --------------------------------------------
 def pyramid3(n):
-        
+    x="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for n in range(1, N+1):
+        print( ' '*(N-n), end='' )
+        for i in range(n):
+            if i > 25:
+                print( f'{x[i-26]} ', end = '' ) 
+            else:
+                print( f'{x[i]} ', end = '' )
+        print()
     pass
+N = int(input())
+pyramid3(N)
 # write your code here
 
 # --------------------------------------------
@@ -57,6 +67,7 @@ def pyramid3(n):
 #     1 2 1 
 #    1 3 3 1 
 #   1 4 6 4 1
+#  1 5 10 10 5 1
 # --------------------------------------------
 def pyramid4(n):
 
@@ -74,7 +85,6 @@ def pyramid4(n):
 #    * *     * * 
 #   *   *   *   * 
 #  * * * * * * * * 
-# 
 # n = 3 
 #                 *
 #                * *
@@ -98,6 +108,11 @@ def sierpinski_triangle(n):
     pass
 # write your code here
 
+# 5-2)
+def sierpinski_triangle(n):
+
+    pass
+
 # --------------------------------------------
 # 2. 여러 리스트 관련 함수들 구현해보기
 # 아래 함수들은 대부분 itertools에 있는 함수들임. 
@@ -107,8 +122,13 @@ def sierpinski_triangle(n):
 # lst -> [lst[0], f(lst[0], lst[1]), f(lst[2], f(lst[1], lst[0])), ...] 
 # --------------------------------------------
 def accumulate(lst, function = lambda x, y: x+y):
-
-    pass
+    nlst=[lst[0]]
+    for i in range(len(lst)-1):
+      nlst.append(function(lst[i], lst[i+1]))
+    return nlst
+lst=[1,2,3,4,5,6,7,8,9,10]
+print(accumulate(lst))
+accumulate(lst)
 # write your code here
 
 # --------------------------------------------
