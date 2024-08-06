@@ -69,7 +69,7 @@ def sort3(lst, upper_to_lower = True, cmp = lambda x, y: x if x >= y else y):
             lst.append(lst.pop(x))
     return lst
 def sort4(lst, upper_to_lower = True, cmp = lambda x, y: x):
-    pass 
+    pass
 
 def sort5(lst, upper_to_lower = True, cmp = lambda x, y: x, tie_breaker = lambda x, y: random.choice([x,y])):
     pass 
