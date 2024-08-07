@@ -10,5 +10,3 @@ def list_extension_files(root):
     pass 
 def copy_directory(src, dest):    
     pass
-
-    
