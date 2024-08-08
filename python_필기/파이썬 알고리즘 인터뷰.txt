@@ -1,0 +1,121 @@
+## 알고리즘 목차 (Algorithm Table of Contents)
+### 정렬 알고리즘 (Sorting Algorithms)
+1. 버블 정렬 (Bubble Sort)
+2. 선택 정렬 (Selection Sort)
+3. 삽입 정렬 (Insertion Sort)
+4. 병합 정렬 (Merge Sort)
+5. 퀵 정렬 (Quick Sort)
+6. 힙 정렬 (Heap Sort)
+7. 계수 정렬 (Counting Sort)
+8. 기수 정렬 (Radix Sort)
+9. 버킷 정렬 (Bucket Sort)
+### 검색 알고리즘 (Searching Algorithms)
+1. 선형 검색 (Linear Search)
+2. 이진 검색 (Binary Search)
+3. 탐색 트리 (Search Trees)
+   - 이진 탐색 트리 (BST)
+   - AVL 트리 (AVL Tree)
+   - 레드-블랙 트리 (Red-Black Tree)
+### 그래프 알고리즘 (Graph Algorithms)
+1. 너비 우선 탐색 (BFS)
+2. 깊이 우선 탐색 (DFS)
+3. 다익스트라 알고리즘 (Dijkstra's Algorithm)
+4. 벨만-포드 알고리즘 (Bellman-Ford Algorithm)
+5. 플로이드-와샬 알고리즘 (Floyd-Warshall Algorithm)
+6. 크루스칼 알고리즘 (Kruskal's Algorithm)
+7. 프림 알고리즘 (Prim's Algorithm)
+### 동적 프로그래밍 (Dynamic Programming)
+1. 피보나치 수열 (Fibonacci Sequence)
+2. 최장 공통 부분 수열 (LCS)
+3. 배낭 문제 (Knapsack Problem)
+4. 최대 부분 배열 문제 (Maximum Subarray Problem)
+### 탐욕 알고리즘 (Greedy Algorithms)
+1. 활동 선택 문제 (Activity Selection Problem)
+2. 최소 동전 교환 문제 (Minimum Coin Change Problem)
+3. 허프만 코딩 (Huffman Coding)
+### 분할 정복 (Divide and Conquer)
+1. 병합 정렬 (Merge Sort)
+2. 퀵 정렬 (Quick Sort)
+3. 최근접 점 찾기 (Closest Pair of Points)
+4. 스트라센 행렬 곱셈 (Strassen's Matrix Multiplication)
+### 기타 알고리즘 (Miscellaneous Algorithms)
+1. 유니온 파인드 (Union-Find)
+2. 해시 테이블 (Hash Table)
+3. KMP 문자열 검색 (KMP String Search)
+4. 보이어-무어 알고리즘 (Boyer-Moore Algorithm)
+5. RSA 암호화 (RSA Encryption)
+
+
+학습 경로 요약 (Summary of Learning Path)
+정렬 알고리즘 (Sorting Algorithms)
+검색 알고리즘 (Searching Algorithms)
+분할 정복 (Divide and Conquer)
+그래프 알고리즘 (Graph Algorithms)
+동적 프로그래밍 (Dynamic Programming)
+탐욕 알고리즘 (Greedy Algorithms)
+기타 알고리즘 (Miscellaneous Algorithms)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+준랩 소개
+이 책의 구성
+학습 로드맵
+
+Part 1 핵심 알고리즘의 이해
+Chapter 1 코딩테스트란 무엇인가
+1. 코딩테스트의 이해
+2. 온라인 코딩테스트
+3. 코딩테스트 환경구축
+4. 알고리즘과 복잡도
+5. 빅오 표기법
+
+Chapter 2 자료 구조
+1. 배열 숫자를 모아서 처리하기
+2. 문자열 문자를 모아서 처리하기
+3. 딕셔너리 문자열과 숫자를 한 쌍으로 처리하기
+4. 큐 데이터를 추가한 순서대로 처리하기
+
+Chapter 3 구현
+1. 배열 주어진 시나리오를 배열로 구현하기
+2. 문자열 주어진 시나리오를 문자열로 구현하기
+
+Chapter 4 완전 탐색
+1. 완전 탐색(반복문) 반복문으로 모든 경우를 처리하기
+2. 완전 탐색(재귀) 재귀 함수로 모든 경우를 처리하기
+
+Chapter 5 누적 합, 이진 탐색, 수학
+1. 누적 합 누적된 합으로 구간 합을 빠르게 처리하기
+2. 이진 탐색 데이터를 반씩 처리하기
+3. 수학 소수, 진법, 사칙 연산 문제 해결하기
+
+Chapter 6 너비 우선 탐색, 최단 경로
+1. 너비 우선 탐색 인접한 정점을 먼저 탐색하기
+2. 최단 경로 가중치 합이 최소인 경로 찾기
+
+Chapter 7 동적 계획법, 트리
+1. 동적 계획법 여러 개의 작은 문제로 나누어 풀기
+2. 트리 계층적인 자료 표현하기
+
+Part 2 실전 문제 & 기출 문제
+Chapter 8 실전 문제
+Chapter 9 기출 문제
+
+Part 3 부록
+부록 A 코딩테스트를 위한 파이썬 문법
+부록 B 코딩테스트 경향 및 취업가이드
+부록 C 코딩테스트, 챗GPT와 함께 공부하기
