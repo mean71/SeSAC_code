@@ -1,3 +1,4 @@
+#lv0
 #--------------------------------------------
 # 1. hello world 출력할 것 
 #--------------------------------------------
@@ -9,7 +10,7 @@ print('hello world')
 assert 1 + 3 == 4
 assert 3 // 3 == 1
 assert 5 % 2 == 1
-assert 6 / 2 == 3.0
+assert 6 / 2 == 3.0, 'a'
 #--------------------------------------------
 # 3. 주어진 문자열을 이용해서 다른 문자열 만들어보기 
 # 아래에 주어진 문자열 a, b를 이용해서 문자열 c, d를 만들어보세요. 
@@ -26,13 +27,13 @@ d = f'{a} {b} '*2
 # 4. n이 짝수면 is even, 아니면 is odd 출력 
 #--------------------------------------------
 n = 5 
-# write your code here 
 print('is even') if n%2==0 else print('is odd')
 #--------------------------------------------
 # 5. len, type, isinstance 함수들 써보기 
 #--------------------------------------------
 class A:
-  a=[ 1,'2',[3],(4),{5}, list(range( [10] )) ]
+    a=[ 1,'2',[3],(4),{5}, list(range( 10 )) ]
+    # a=[ 1,'2',[3],(4),{5}, list(range( [10] )) ] # [10]은 리스트라 range안받음
 isinstance(A.a, A)
 isinstance(A.a, list)
-print([ ( type(A.a[i]) ) for i in range(len(A.a)) ])
+print( len(A.a), type(A.a), [ ( type(A.a[i]) ) for i in range(len(A.a)) ], sep = '\n')

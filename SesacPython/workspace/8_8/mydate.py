@@ -7,22 +7,20 @@ class MyDate:
         self.hour = hour
         self.minute = minute
         self.sec = sec
-        if not MyDate.check_DB(self): print('value range Error')
+        self.check_DB()
+        print(f'{year:04d}-{month:02d}-{day:02d}-{hour:02d}:{minute:02d}:{sec:02d}')
 
-    def all_date(self):  
+    def all_date(self):
         return (self.year, self.month, self.day, self.hour, self.minute, self.sec)
 
     def check_DB(self): # 범위지정
-        if 1 <= self.month <= 12:
-            return True
-        if 1 <= self.day <= self.count_month_day(self.year, self.month):
-            return True
-        if 0 <= self.hour < 24:
-            return True
-        if 0 <= self.minute < 60:
-            return True
-        if 0 <= self.sec < 60:
-            return True
+        assert not 0 <= self.year, f'RangeErrorYear ({self.year})'
+        assert not 0 <= self.month <= 12, f'RangeErrorMonth ({self.month})'
+        assert not 0 <= self.day <= self.count_month_day(self.year, self.month), f'RangeErrorDay ({self.day})'
+        assert not 0 <= self.hour < 24, f'RangeErrorHour ({self.hour})'
+        assert not 0 <= self.minute < 60, f'RangeErrorMinute ({self.minute})'
+        assert not 0 <= self.sec < 60, f'RangeErrorSec ({self.sec})'
+        print('good')
 
     def what_y(self, year):
         return (year % 4 == 0 and year % 100 != 0) or year % 400 == 0
@@ -44,6 +42,8 @@ class MyDate:
         day = self.day + other.day
         hour = self.hour + other.hour
         minute = self.day + other.minute
+        print('__add__')
+        print(year, month, day, hour, minute)
         if month > 12:
             month %= 12
             year += 1
@@ -59,22 +59,37 @@ class MyDate:
             if month > 12:
                 month %= 12
                 year += 1
-        return 0
+        
+        
+        return MyDate(year, month, day, hour, minute)
 
-    def __sub__(self, other): # a - b는 a.__sub__(b)        # a-b 이번엔 두 시간의 일수와 시간의 차이를 구해본다.
+
+    def __sub__(self, other): # a - b는 a.__sub__(b) 
         year = self.year - other.year
         month = self.month - other.month
         day = self.day - other.day
         hour = self.hour - other.hour
-        minute = self.day - other.minute
+        minute = self.minute - other.minute
+
+        if month <= 0:
+            month += 12
+            year -= 1
         if minute < 0:
             minute += 60
             hour -= 1
         if hour < 0:
             hour += 24
             day -= 1
-        if day < self.count_month_day(year, month):
-            return
+        if day < 0:
+            day += self.count_month_day(year, month)
+            month -= 1
+            if month <= 0:
+                month += 12
+                year -= 1
+        print('__sub__')
+        print(year, month, day, hour, minute)
+        return MyDate(year, month, day, hour, minute)
+
 
     def __eq__(self, other): # a == b는 a.__eq__(b)        # a==b
         return MyDate.all_date(self) == MyDate.all_date(other)
@@ -91,8 +106,8 @@ class MyDate:
     def __ge__(self, other): # a >= b는 a.__ge__(b)        # a>=b
         return MyDate.all_date(self) >= MyDate.all_date(other)
     
-    def __str__(self): # 유사메서드 __repr__# 이러면 작동하나?
-         return f"{self.year}-{self.month}-{self.day} {self.hour:02d}:{self.minute:02d}:{self.sec:02d}"
+    # def __str__(self): # 유사메서드 __repr__# 이러면 작동하나?
+    #      return f"{self.year}-{self.month}-{self.day} {self.hour:02d}:{self.minute:02d}:{self.sec:02d}"
 
 if __name__ == '__main__':
     d0 = MyDate()
@@ -102,15 +117,15 @@ if __name__ == '__main__':
     d3 = MyDate(2024, 2, 30)
 
     d3 = MyDate(day = 1) 
-    assert d1 + d3 == MyDate(2022, 4, 2, 14, 30), 'd1 + d3 뭔가 이상하니 알고리즘을 죄다 뜯어고친다'
-    assert d1 - d3 == MyDate(2022, 3, 31, 14, 30), 'd1 - d3' # 날짜,시간 차이를 구하자!
+    assert d1 + d3 == MyDate(2022, 4, 2, 14, 30), 'is not d1 + d3'
+    assert d1 - d3 == MyDate(2022, 3, 31, 14, 30), f' {d1.all_date()}{d3.all_date()}, in not d1 - d3' # 코드는 잘돌아가지만 주소값이 나온다. 실수를 이해하기위해 보존
     assert d1 < d2, 'd1 < d2'
     assert d1 <= d2, 'd1 <= d2'
     assert d1 > d2, 'd1 > d2'
     assert d1 >= d2, 'd1 >= d2'
 
-def l():
-    str(
+#def l():
+ #   str(
     '''
     __init__(self, ...): 생성자 메서드로, 객체가 생성될 때 호출됩니다. 객체의 초기 상태를 설정하는 데 사용됩니다.
     __add__(self, other): 덧셈 연산자 +에 해당하며, 두 객체를 더할 때 호출됩니다.
@@ -167,5 +182,4 @@ def l():
     => MyDate __sub__(d1,d2)
 
     '''
-    )
-    pass
+    #)    pass
