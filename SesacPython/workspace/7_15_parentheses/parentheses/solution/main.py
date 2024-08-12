@@ -55,7 +55,7 @@ def find_matching_pair(text, idx):
         raise ValueError(f'Unexpected idx value; {idx}')
     
     s = 0 
-    flag = False 
+    flag = False
     
     for i, char in enumerate(text):
         if char not in tokens:
