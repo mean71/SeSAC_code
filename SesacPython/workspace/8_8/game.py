@@ -27,8 +27,6 @@ class Game:
         # K 20, We 75%: 강자승리 강자+5,약자-5; 무승부 강자-5,약자+5; 약자승리 강자-15,약자+15
         # 나와 상대의 티어점수 주소를 호출해서 가감하고 집어넣어야 한다.
         # 데이터부터 짜고 생성
-
-
     def match_players(self): #인자로 받은 userDB에서 키값ID리스트를 뽑아 상대로 랜덤매칭
         player_lst= list(userDB.keys())
         player_lst.remove(self.player_id)
@@ -43,7 +41,7 @@ class Game:
         actual_rating_We = 1 / (10**( (player2_actual_rating - self.actual_rating)/400 ) + 1) # 실제실력스탯에 기반한 예측승률
         W = random.choices([1, 0], weights=[actual_rating_We, 1-actual_rating_We], k=1)[0]
          #유저레이팅 예측승률기반 가중치로 승패결과반환
-        K=30    # 점수가중치
+        K=100    # 점수가중치
         self.userDB[self.player_id]['initial_rating'] +=  K*(W - We) # self_player 점수 변동
         if W == 1:
             self.userDB[self.player2_id]['initial_rating'] += K*(0 - (1-We)) # player2 점수 변동
@@ -93,15 +91,13 @@ def mk_userDB(new_id, old_id): # 중복없이 신규/기존 테스트 유저DB �
         }
 
 
-
-
 if __name__ == '__main__':
 
     mk_userDB(5,10) # 유저DB랜덤생성(신규유저수,숙련유저수)
     print(len(user_name),[*user_name]) # 확인용
     print(len(userDB),userDB,sep='\n') # 생성DB출력
     a = 0
-    while a < 2000:
+    while a < 100000:
         player1_id = random.choice(list(userDB.keys()))
         game = Game(userDB,player1_id)
         game.play_match()
@@ -134,4 +130,4 @@ if __name__ == '__main__':
 # 코드 실행 결과
 # id : , 레이팅 : , 실력레이팅 :
 # 을 전부 출력해서 결과를 볼 수 있도록 한다. 근데 모든유저끼리 대전시켜서 시뮬?
-# 정신건강을 위해 한유저만 
+# 정신건강을 위해 한유저만 둘다 랜덤으로! 증강점수 출력?

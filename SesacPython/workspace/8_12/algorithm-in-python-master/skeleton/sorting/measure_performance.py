@@ -3,7 +3,6 @@ import os
 import pickle 
 import random 
 from time import time 
-
 import sorting 
 
 result_dir = 'experiment result'
