@@ -39,7 +39,7 @@ class LinkedList:
             cur = cur.next 
 
     def __str__(self):
-        cur = self.head 
+        cur = self.head     
         res = ''
 
         while cur is not None:
