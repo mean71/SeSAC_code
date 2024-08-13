@@ -10,7 +10,6 @@ class LinkedNode:
         self.next = next # 기본값 None
 
 # elements가 LinkedNode 클래스의 리스트
-# 
 class LinkedList:
     def __init__(self, elements):
         if elements == []: # 인자로 받은 리스트가 비었을때
@@ -24,20 +23,18 @@ class LinkedList:
             self.end = elements[-1] # 현재남은 리스트의 마지막? None이 나올때까지???
             self.size = len(elements) # 리스트사이즈
             for i in range(len(elements)-1):
-                elements[i].next = elements[i+1] # 인자로 받은 리스트에서 요소를 호출해도 인스턴스 클래스의 인스턴스는 클래스의 속성을 공유가능하다.
-                
-                
-                
-
+                elements[i].next = elements[i+1]# 인자로 받은 리스트에서 요소를 호출해도 클래스의 인스턴스취급이고 하나하나 클래스의 속성을 같이 부여가능
+    
+                self.size -=1
 
                 
 
-    def __iter__(self): #
-        
-        yield None
+    def __iter__(self): #순서대로 반환?
+        yield self
 
     def __str__(self):
-
+        # LinkedList(리스트) 호출하면
+        # res = 노드?
         return res
 
     def append(self, elem):

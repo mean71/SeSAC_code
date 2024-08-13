@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     for backend in available_backends:
         s1 = Stack(3,2,1,4)
-        assert s1.top() == 4 
+        assert s1.top() == 4
         assert not s1.is_empty()
         assert s1.pop() == 4 
         assert s1.top() == 1 

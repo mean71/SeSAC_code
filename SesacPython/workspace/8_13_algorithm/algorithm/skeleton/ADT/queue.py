@@ -22,7 +22,7 @@ class Queue:
 
     def elements(self):
         if self.backend == list:
-            return self.list 
+            return self.list
 
     def enqueue(self, elem):
         if self.backend == list:
