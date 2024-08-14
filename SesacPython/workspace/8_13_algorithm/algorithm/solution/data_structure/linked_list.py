@@ -26,10 +26,10 @@ class LinkedList:
 
             assert isinstance(tail, LinkedList) or tail is None 
             assert end.next is None
-            self.head = head 
-            self.tail = tail 
-            self.end = end 
-            self.size = size 
+            self.head = head
+            self.tail = tail
+            self.end = end
+            self.size = size
 
     def __iter__(self):
         cur = self.head
@@ -61,8 +61,8 @@ class DoublyLinkedNode(Node):
 class DoublyLinkedList:
     def __init__(self, elements):
         if elements == []:
-            self.head = None 
-            self.tail = None 
+            self.head = None
+            self.tail = None
             self.end = None
             self.size = 0
         else:
@@ -89,10 +89,9 @@ class DoublyLinkedList:
 
     def __iter__(self):
         cur = self.head
-
         while cur is not None:
-            yield cur 
-            cur = cur.next 
+            yield cur
+            cur = cur.next
 
     def __str__(self):
         cur = self.head 

@@ -18,41 +18,59 @@ class Queue:
         if self.backend == list:
             self.list = list(elements)
         elif self.backend == LinkedList:
-            self.linked_list = None # make right linked list
+            self.linked_list = LinkedList(elements) # make right linked list
 
-    def elements(self):
+    def elements(self): # 모든 요소 반환
         if self.backend == list:
             return self.list
+        elif self.backend == LinkedList:
+            res = []
+            cur = self.linked_list.head
+            while cur != None:
+                res.append(cur.datum)
+                cur = cur.next
+            return res
 
     def enqueue(self, elem):
         if self.backend == list:
-            self.list = [elem] + self.list
+            self.list = [elem] + self.list # 앞에 요소추가
+        elif self.backend == LinkedList:
+            self.linked_list.append(elem)
 
     def dequeue(self):
         if self.backend == list:
-            return self.list.pop()
+            return self.list.pop() # 마지막 요소 제거/반환
+        elif self.backend == LinkedList:
+            self.linked_list.pop()
                 
     def front(self):
-        if self.backend == list:
+        if self.backend == list: # 마지막 요소 반환
             return self.list[-1]
+        elif self.backend == LinkedList:
+            self.linked_list.head
+        
 
     def size(self):
-        if self.backend == list:
+        if self.backend == list: # size반환
             return len(self.list)
+        elif self.backend == LinkedList:
+            self.linked_list
     
-    def is_empty(self):
-        if self.backend == list:
+    def is_empty(self): 
+        if self.backend == list: # 리스트가 없으면 반환
             return self.list == []
+        elif self.backend == LinkedList:
+            self.linked_list = 
 
-    def __str__(self):
+    def __str__(self):  # str
         return str(self.elements())
 
-    def __eq__(self, other):
+    def __eq__(self, other):    # ==
         if isinstance(other, Queue):
             return self.elements == other.elements 
         return False
 
-class PriorityQueue: # 우선 순위 큐?
+class PriorityQueue: # 우선 순위 큐
     def __init__(self, *elements_with_priority, backend = list):
         """
             리스트와 그 우선순위를 나타내는 2- 튜플 (OBJ,number) 목록을 가져옵니다. 숫자가 높을수록 우선 순위가 높은요소입니다..
@@ -88,11 +106,11 @@ class PriorityQueue: # 우선 순위 큐?
 
     def __eq__(self, other):
         if isinstance(other, Queue):
-            return self.elements == other.elements 
+            return self.elements == other.elements
         return False 
 
 if __name__ == '__main__':
-    available_backends = [list, LinkedList, DoublyLinkedList]
+    available_backends = [list, LinkedList] # , DoublyLinkedList]
 
     for backend in available_backends: # 사용가능 백앤드
         q1 = Queue(1,2,3,4, backend = backend)
@@ -109,20 +127,20 @@ if __name__ == '__main__':
         assert q1.front() == 3 
 
 
-        # q2 = Queue(backend = backend)
+        q2 = Queue(backend = backend)
 
-        # assert q2.elements() == []
-        # assert q2.size() == 0
-        # assert q2.is_empty()
+        assert q2.elements() == []
+        assert q2.size() == 0
+        assert q2.is_empty()
         
-        # q2.enqueue(1)
+        q2.enqueue(1)
 
-        # assert q2.elements() == [1]
-        # assert q2.size() == 1
-        # assert not q2.is_empty()
+        assert q2.elements() == [1]
+        assert q2.size() == 1
+        assert not q2.is_empty()
         
-        # if backend == LinkedList:
-        #     print(q1.linked_list, q2.linked_list)
+        if backend == LinkedList:
+            print(q1.linked_list, q2.linked_list)
     
         # q2 = PriorityQueue(('c',1), ('d',4), ('e',2), ('b',3), backend = backend)
 

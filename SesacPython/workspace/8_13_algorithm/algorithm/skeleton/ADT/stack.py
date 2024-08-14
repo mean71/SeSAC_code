@@ -13,7 +13,7 @@ class Stack:
         if self.backend == list:
             self.list = list(elements)
         elif self.backend == LinkedList:
-            self.linked_list = None # make right linked list 
+            self.linked_list = None # make right linked list
     
     def push(self, elem):
         if self.backend == list:

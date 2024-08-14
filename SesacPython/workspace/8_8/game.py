@@ -97,7 +97,7 @@ if __name__ == '__main__':
     print(len(user_name),[*user_name]) # 확인용
     print(len(userDB),userDB,sep='\n') # 생성DB출력
     a = 0
-    while a < 100000:
+    while a < 200000:
         player1_id = random.choice(list(userDB.keys()))
         game = Game(userDB,player1_id)
         game.play_match()
