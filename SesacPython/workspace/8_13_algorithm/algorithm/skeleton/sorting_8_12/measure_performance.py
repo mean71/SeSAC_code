@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import os 
 import pickle 
 import random 
-from time import time 
+from time import time
 
 import sorting 
 

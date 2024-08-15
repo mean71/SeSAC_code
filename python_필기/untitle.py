@@ -23,10 +23,12 @@ abcde
 FGHIJ
 fghij
 '''
+sys.stdin = StringIO(input_data) # 입력을 받는대신 input_data에서 테스트케이스를 읽어온다
 
 
 
-# sys.stdin = StringIO(input_data)
+
+
 
 # import sys
 
@@ -97,11 +99,16 @@ fghij
 
 
 # 백준10798 세로읽기
-string = list(sys.stdin.readline().split())
+
+string = [(sys.stdin.readline().strip()) for _ in range(5)]
 strs = ''
+print(string,sep='\n')
 L = max(map(len, string))
+# max_length = max(len(s) for s in strings)
 print(L)
-# while i :
-#     for j in range(5):
-#          strs += string[j][i]
-#     i += 1
+
+for i in range(L):
+    for j in range(5):
+        if i < len(string[j]):
+            strs += string[j][i]
+print(strs)

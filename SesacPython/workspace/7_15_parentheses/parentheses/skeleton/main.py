@@ -54,17 +54,17 @@ def determine_if_rule2(text): # 룰2를 적용할 조건인지 체크하는 함�
     return not(determine_if_rule0(text) or determine_if_rule1(text))
 
 def parse_empty_string(): # 구문해석_빈_문자열이 들어왔을시 리턴값
-    return{'node':'','rule':0}
+    return{'node':"''",'rule':0}
 def default_node_information(text, offset): # 기본 노드 정보
     res={}
     res={'node':text,'start':offset,'and':len(text)-1}
-        'node': text,
-            'start': 0,
-            'end': 1,
-            'rule': 1,
     return res
-
-            'left': {
+        # 'node': text,
+        # 'start': 0,
+        # 'end': 1,
+        # 'rule': 1,
+    
+                'left': {
                 'node': '(',
                 'start': 0,
                 'end': 0,
@@ -175,7 +175,7 @@ def parse_parentheses(text): # (구문문석-pars_괄호_parentheses)
     return parse_parentheses_with_offset(text) # (구문문석-parse_괄호_parentheses)함수의 반환값을 이 함수(text)로
 
 def parse_parentheses_with_offset(text, offset = 0):  # 함수(a,b=0) # offset은 뭔가 첫함수에 들어가는 인덱스관련값
-    rule0 = determine_if_rule0(text)                  # 앞서 룰0,1,2결정함수에서 True,False반환값 입력
+    rule0 = determine_if_rule0(text)                  # 앞서 룰0,1,2결정함수에서 text에 따라 True,False반환값 대입
     rule1 = determine_if_rule1(text) 
     rule2 = determine_if_rule2(text) 
 

@@ -23,8 +23,7 @@ class LinkedList:
             self.end = self.head
             self.size = 1
             for x,y in enumerate(elements[1:]):
-                node = LinkedNode(1, 2)
-                node = LinkedNode(1, 2)
+                node = LinkedNode(x+1, y)
                 self.end.next = node
                 self.end = node
                 self.size += 1
@@ -45,7 +44,6 @@ class LinkedList:
     def __iter__(self): # 반복자로서 호출하면
         
         cur = self.head
-
         while cur is not None:
             yield cur.datum
             cur = cur.next
@@ -62,22 +60,21 @@ class LinkedList:
         res += '[None]'
         return f'{res}'
 
-    def _append(self, elem): # 1.노드생성 2.end노드에 노드연결 3.end에 노드를 넣어 바꾼다. appendleft()도 동일
+    def append(self, elem): # 1.노드생성 2.end노드에 노드연결 3.end에 노드를 넣어 바꾼다. appendleft()도 동일
         # if not isinstance(elem, LinkedNode):
         append_elem = LinkedNode(self.size, elem, next = None)
         self.end.next = append_elem
         self.end = append_elem
         self.size += 1
 
-    def _pop(self):
+    def pop(self): # 1. 헤드 노드 datum 꺼내서 반환 2. head.next를 head에 넣고 사이즈 1감소 3. 그럼 .next연결이 끊어진 기존 head 데이터는 어찌 처리해야 하는가?
         if self.head != None:
             head_data = self.head.datum
             self.head = self.head.next
             self.size -= 1
+            return head_data
         else:
-            print('꺼낼 데이터가 없습니다.')
-        return head_data
-        
+            print('There is no data to retrieve from the list.')
         
 
 

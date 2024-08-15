@@ -13,27 +13,40 @@ class Stack:
         if self.backend == list:
             self.list = list(elements)
         elif self.backend == LinkedList:
-            self.linked_list = None # make right linked list
+            self.linked_list = LinkedList(elements) # make right linked list
     
     def push(self, elem):
         if self.backend == list:
             self.list.append(elem)
+        elif self.backend == LinkedList:
+            self.linked_list.append(elem)
 
     def pop(self):
         if self.backend == list:
             return self.list.pop()
+        elif self.backend == LinkedList:
+            if self.linked_list.size != 0:
+                return self.backend.pop()
 
     def top(self):
         if self.backend == list:
             return self.list[-1]
+        elif self.backend == LinkedList:
+            if self.linked_list.size != 0:
+                return self.linked_list.end.datum
 
     def is_empty(self):
         if self.backend == list:
             return self.list == []
+        elif self.backend == LinkedList:
+            if self.linked_list.size == 0:
+                return print('There is no data to retrieve from the list.')
 
     def size(self):
         if self.backend == list:
             return len(self.list)
+        elif self.backend == LinkedList:
+            self.linked_list.size
 
 if __name__ == '__main__':
     available_backends = [list, LinkedList, DoublyLinkedList]
