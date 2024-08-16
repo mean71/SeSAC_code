@@ -119,7 +119,7 @@ class PriorityQueue: # 우선 순위 큐
             return self.list[-1]
         elif self.backend == LinkedList:
             if self.linked_list.size != 0:
-                return self.linked_list.head.datum
+                return self.linked_list.end.datum
 
     def size(self):
         if self.backend == list:
@@ -144,7 +144,7 @@ class PriorityQueue: # 우선 순위 큐
         return False 
 
 if __name__ == '__main__':
-    available_backends = [list, LinkedList] # , DoublyLinkedList
+    available_backends = [list, LinkedList, DoublyLinkedList] # , DoublyLinkedList
 
     for backend in available_backends: # 사용가능 백앤드
         q1 = Queue(1,2,3,4, backend = backend)
@@ -195,3 +195,6 @@ if __name__ == '__main__':
         q2.dequeue()
 
         assert q2.is_empty()
+
+        if backend == DoublyLinkedList:
+            print()

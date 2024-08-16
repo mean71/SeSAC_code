@@ -1,4 +1,3 @@
-
 def get_insert_idx(res, elem, 
         cmp = lambda x, y: x if x > y else y, ):
 
