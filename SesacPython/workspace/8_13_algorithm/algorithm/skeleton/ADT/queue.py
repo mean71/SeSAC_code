@@ -46,7 +46,7 @@ class Queue:
                 
     def front(self):
         if self.backend == list and self.list == True: # 마지막 요소 반환
-            return self.list[-1] 
+            return self.list[-1]
         elif self.backend == LinkedList:
             if self.linked_list.size != 0:
                 return self.linked_list.head.datum

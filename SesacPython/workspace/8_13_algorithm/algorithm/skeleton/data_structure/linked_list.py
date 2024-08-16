@@ -21,14 +21,10 @@ class LinkedList:
         if elements == []: # 인자로 받은 리스트가 비었을때            
             print('There is no data to retrieve from the list.')
 
-        
-            
-
-            
         #     elements[-1].next = None
         #     self.end = LinkedNode(elements[-1])
         #     self.tail = LinkedNode(elements[1:])
-            
+        
         #     self.end = self.head
         #     self.size = 1
         #     for x,y in enumerate(elements[1:]):
@@ -106,11 +102,12 @@ class LinkedList:
             self.size += 1
         
     def insert(self, idx, elem): # 연결리스트 중간에 노드추가
+
         pass
     
-    def generation_link(self): # __init__에서 처리하던 인수 연결리스트 일괄변환 head >> end 순서
+    def generation_link(self, elements): # __init__에서 처리하던 인수 연결리스트 일괄변환 head >> end 순서
         if self.head:
-            for x in self.elements:
+            for x in elements:
                 self.id += 1
                 node = LinkedNode(x, node_id = self.id)
 
@@ -122,8 +119,6 @@ class LinkedList:
                         cur = cur.next
                     cur.next = node
                 self.size += 1
-
-
 
     def pop_head(self): # 1. 헤드 노드 datum 꺼내서 반환 2. head.next를 head에 넣고 사이즈 1감소 3. 그럼 .next연결이 끊어진 기존 head 데이터는 어찌 처리해야 하는가?
         if self.head != None:
@@ -207,6 +202,6 @@ if __name__ =='__main__':
     print(123)
     assert lst.head.next.next.next.datum == 5
     print(123)
-    assert lst.head.next.next.next.next is None 
+    assert lst.head.next.next.next.next is None
     print(LinkedList([1,2,3,4]))
     print(LinkedList([1,2,3,4]).size)

@@ -107,3 +107,5 @@ def solution(a, b, c):
 # t=(lambda s:(lambda:"Invalid" if s.replace('-', '', 1).isdigit() is False else (lambda x: "Positive" if x > 0 else "Negative" if x < 0 else "Zero")(int(s)))())(input("Enter an integer: "))
 
 # result=(lambda s:(lambda x:"Positive" if x > 0 else "Negative" if x < 0 else "Zero")(int(s)) if s.replace('-', '', 1).isdigit() else "Invalid input")(input("Enter an integer: "))
+
+
