@@ -1,13 +1,9 @@
 import sys 
 sys.path.append('../data_structure')
 
-try:
-    from linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
-except ModuleNotFoundError:
-    from data_structure.linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
+from linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
 
-
-class Stack:
+class Queue:
     def __init__(self, *elements, backend = list):
         self.backend = backend
 
@@ -48,7 +44,7 @@ class Stack:
         elif self.backend == list:
             return self.list 
 
-    def push(self, elem):
+    def enqueue(self, elem):
         if self.backend == LinkedList:
             n = LinkedNode(self.linked_list.size, elem, None)
             if self.linked_list.size != 0:
@@ -69,7 +65,7 @@ class Stack:
         elif self.backend == list:
             self.list.append(elem)
 
-    def pop(self):
+    def dequeue(self):
         if self.backend == LinkedList:
             for elem in self.linked_list:
                 if elem.next == self.linked_list.end:
@@ -88,16 +84,12 @@ class Stack:
         elif self.backend == list:
             return self.list.pop()
                 
-    def top(self):
-        if self.size() == 0:
-            return None 
-            
+    def front(self):
         if self.backend == LinkedList:
             return self.linked_list.end.datum
         elif self.backend == DoublyLinkedList:
             return self.doubly_linked_list.end.datum
         elif self.backend == list:
-            assert list != []
             return self.list[-1]
 
     def size(self):
@@ -122,23 +114,40 @@ class Stack:
             return self.elements == other.elements 
         return False 
 
+
+
+
 if __name__ == '__main__':
     available_backends = [list, LinkedList, DoublyLinkedList]
 
     for backend in available_backends:
-        s1 = Stack(3,2,1,4)
-        assert s1.top() == 4 
-        assert not s1.is_empty()
-        assert s1.pop() == 4 
-        assert s1.top() == 1 
+        q1 = Queue(1,2,3,4, backend = backend)
         
-        s1.push(5) 
-        assert s1.top() == 5
-        assert s1.size() == 4
+        assert q1.elements() == [1,2,3,4]
+        assert q1.size() == 4
+        
+        q1.enqueue(5)
+        assert q1.elements() == [5,1,2,3,4]
+        assert q1.size() == 5
+        assert q1.dequeue() == 4
+        assert q1.size() == 4
+        assert q1.elements() == [5,1,2,3]
+        assert q1.front() == 3 
 
-        assert s1.pop() == 5
-        assert s1.pop() == 1
-        assert s1.pop() == 2
-        assert s1.pop() == 3
 
-        assert s1.is_empty()
+        q2 = Queue(backend = backend)
+
+        assert q2.elements() == []
+        assert q2.size() == 0
+        assert q2.is_empty()
+        
+        q2.enqueue(1)
+
+        assert q2.elements() == [1]
+        assert q2.size() == 1
+        assert not q2.is_empty()
+        
+        if backend == LinkedList:
+            print(q1.linked_list, q2.linked_list)
+
+

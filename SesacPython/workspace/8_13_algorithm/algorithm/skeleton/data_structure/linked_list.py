@@ -20,8 +20,8 @@ class LinkedList:
         self.id = 0
         if elements:
             for i in elements:
-                self.append(i) # LinkedList.append(i)는 잘못된 방식
-        elif elements is None: # 인자로 받은 리스트가 비었을때            
+                self.append_end(i) # LinkedList.append(i)는 잘못된 방식
+        elif elements is None: # 인자로 받은 리스트가 비었을때
             print('There is no data to retrieve from the list.')
 
         #     elements[-1].next = None
@@ -116,7 +116,7 @@ class LinkedList:
         #     self.head = LinkedNode(self.id, elem)
         #     self.size += 1
 
-    def insert(self, idx, elem): # 연결리스트 중간에 노드추가
+    def insert(self, idx, elem): # 연결리스트 중간에 노드추가?
 
         pass
 
@@ -147,9 +147,9 @@ class LinkedList:
             return end_data
         else: print('There is no data to retrieve from the list.')
 
-    def rt_front(self):
+    def return_head(self):
         return self.head.datum
-    def rt_end(self):
+    def return_end(self):
         return self.end.datum
     
     def __iter__(self): # 반복자로서 호출하면
