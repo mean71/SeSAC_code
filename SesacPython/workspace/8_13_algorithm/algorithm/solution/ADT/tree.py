@@ -97,6 +97,3 @@ if __name__ == '__main__':
     assert 123 == t1.delete([1,2])
 
     print(t1)
-
-    
-

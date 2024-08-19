@@ -9,18 +9,6 @@ from ADT.stack import Stack
 # from ADT.tree import Tree 
 from data_structure.tree import Tree 
 
-def iter_list(lst):
-    yield lst.head
-    for n in iter.list(lst.tail):
-        yield n
-def iter_tree(tree):
-    yield tree.root
-    for ch in tree.children:
-        for i in iter_tree(ch):
-            yield i
-
-
-
 #-------------------------------------              
 # Formula Class
 #-------------------------------------

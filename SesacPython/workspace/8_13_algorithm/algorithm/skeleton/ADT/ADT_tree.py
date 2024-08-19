@@ -7,7 +7,17 @@ try:
 except ModuleNotFoundError:
     from data_structure.linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
     from data_structure.tree import Tree as TreeDataStructure
-
+'''
+def iter_list(lst):
+    yield lst.head
+    for n in iter.list(lst.tail):
+        yield n
+def iter_tree(tree):
+    yield tree.root
+    for ch in tree.children:
+        for i in iter_tree(ch):
+            yield i
+            '''
 
 class Tree:
     def __init__(self, tree_elements, backend):

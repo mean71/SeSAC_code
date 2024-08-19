@@ -167,7 +167,11 @@ class LinkedList:
         res += '[None]'
         return f'{res}'
         
+def __str__(self):
+    sur = self.head
+    while cur is not None:
 
+        neaddvep[[[[[[[[[op]]]]]]]]]
 
 class DoublyLinkedNode(Node):
     def __init__(self, node_id, datum, prev = None, next = None):
