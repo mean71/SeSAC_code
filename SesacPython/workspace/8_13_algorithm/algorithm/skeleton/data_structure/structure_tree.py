@@ -4,9 +4,10 @@ except ModuleNotFoundError:
     from data_structure.node import Node
 
 class TreeNode:
-    def __init__(self, node_id, datum):
+    def __init__(self, node_id, datum):# root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
         self.node_id = node_id
-        self.datum = datum 
+        self.datum = datum
+# 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입. # 트리노드인스턴스 리스트를 자식트리로 저장
 
 class Tree:
     def __init__(self, root, children = []):
@@ -37,7 +38,7 @@ class Tree:
         pass 
 
     def __str__(self):
-        pass 
+        return '미완성' 
 
 
 if __name__ == '__main__':

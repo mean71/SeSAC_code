@@ -1,7 +1,7 @@
 import os 
 
-from ADT.tree import Tree 
-from data_structure.tree import Tree
+from ADT.ADT_tree import Tree 
+from data_structure.structure_tree import Tree
 
 def get_directory_tree(directory, ignore_directories = [], ignore_extensions = []):
     pass 

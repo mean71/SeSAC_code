@@ -5,21 +5,21 @@ class TreeNode:
 
 class Tree:
     def __init__(self, root, children = []):
-        if not isinstance(root, TreeNode):
+        if not isinstance(root, TreeNode): # root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
             root = TreeNode('0', root)
-        self.root = root 
+        self.root = root
         
-        children = list(children)
+        children = list(children) # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입.
         for idx, child in enumerate(children):
             if not isinstance(child, Tree):
                 children[idx] = Tree(root = TreeNode(str(idx), child))
             
-        self.children = children 
+        self.children = children # 트리노드인스턴스 리스트를 자식트리로 저장
 
-    def iter_nodes(self):
-        yield self.root 
+    def iter_nodes(self):   # 노드 순회 : 명칭은? # root 노드반환 # 자식트리 모든노드를 순회
+        yield self.root # 루트노드 반환 
 
-        for child in self.children:
+        for child in self.children: # 자식트리노드들 순회
             for n in child.iter_nodes():
                 yield n 
 
