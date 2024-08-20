@@ -4,16 +4,35 @@ except ModuleNotFoundError:
     from data_structure.node import Node
 
 class TreeNode:
-    def __init__(self, node_id, datum):# root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
+    def __init__(self, node_id, datum):
         self.node_id = node_id
         self.datum = datum
-# 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입. # 트리노드인스턴스 리스트를 자식트리로 저장
+
+# class tree:
+#     def __init__(self, data):
+#         self.data = data
+#         self.child = []
+#         self.parents = None
+#     def new_node(self, new_node):
+#         new_node.parents = self
+#         self.child.append(new_node)
+# root = tree('프로젝트폴더')
+
+# python = tree('python')
+# python.new_node(tree('python1'))
+# python.new_node(tree('python2'))
+# root.new_node(python)
 
 class Tree:
-    def __init__(self, root, children = []):
-        pass 
+    def __init__(self, root, children = []):# root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
+        self.root = TreeNode('0',root)
+        children = list(children)
+        for idx,child in enumerate(children):
+            children[idx] = Tree(TreeNode(str(idx), child))
+        # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입. # 트리노드인스턴스 리스트를 자식트리로 저장
 
     def iter_nodes(self):
+
         pass
 
     def iter_nodes_with_address(self):
@@ -66,6 +85,6 @@ if __name__ == '__main__':
 
     for addr, n in t1.iter_nodes_with_address():
         assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr 
-        assert t1.search(n.datum) == addr 
+        assert t1.search(n.datum) == addr
 
     print(t1)
