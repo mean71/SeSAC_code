@@ -3,7 +3,7 @@ class TreeNode:
         self.node_id = node_id
         self.datum = datum 
 
-class Tree:
+class Tree: # 트리는 이중연결하면 삑난다.
     def __init__(self, root, children = []):
         if not isinstance(root, TreeNode): # root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
             root = TreeNode('0', root)
@@ -119,3 +119,11 @@ if __name__ == '__main__':
         assert t1.search(n.datum) == addr
 
     print(t1)
+    print('===============')
+    for addr, n in t1.iter_nodes_with_address():
+        print(addr, n.datum)
+    print('===============')
+    for addr, n in t1.children[1].iter_nodes_with_address():
+        print(addr, n.datum)
+    # for i in t1.iter_nodes():
+    #     print(i)

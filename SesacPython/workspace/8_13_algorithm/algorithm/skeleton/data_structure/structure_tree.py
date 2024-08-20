@@ -26,14 +26,19 @@ class TreeNode:
 class Tree:
     def __init__(self, root, children = []):# root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
         self.root = TreeNode('0',root)
+
         children = list(children)
         for idx,child in enumerate(children):
             children[idx] = Tree(TreeNode(str(idx), child))
+        self.children = children
         # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입. # 트리노드인스턴스 리스트를 자식트리로 저장
 
-    def iter_nodes(self):
+    def iter_nodes(self): # yield return+pass
+        yield self.root
 
-        pass
+        for child in self.children:
+            for i in child.iter_nodes():
+                yield i
 
     def iter_nodes_with_address(self):
         pass
@@ -45,16 +50,17 @@ class Tree:
         pass 
 
     def delete(self, address):
-        pass
+        res = []
+        return f'{res} delete'
         
     def search(self, elem):
         pass 
 
     def root_datum(self):
-        pass 
+        return self.root.datum
 
     def height(self):
-        pass 
+        pass h
 
     def __str__(self):
         return '미완성' 
