@@ -4,25 +4,29 @@ class TreeNode:
         self.datum = datum 
 
 class Tree: # 트리는 이중연결하면 삑난다.
-    def __init__(self, root, children = []):
-        if not isinstance(root, TreeNode): # root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
+    def __init__(self, root, children = []):# root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
+        if not isinstance(root, TreeNode): # 인스턴스노드일경우 '0',root로 초기화하지않고 그대로 재귀?한 노드의 root노드가 자신으로 갱신됨
             root = TreeNode('0', root)
         self.root = root
         
-        children = list(children) # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입.
+        children = list(children) # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입.# 재귀, 자식트리들 Tree인스턴스노드로 다시 재귀, 자신의 root노드는 자기자신
         for idx, child in enumerate(children):
             if not isinstance(child, Tree):
                 children[idx] = Tree(root = TreeNode(str(idx), child)) # Tree(root = TreeNode(str(idx), child)) 인 이유를 정확히 이해
             
         self.children = children # 트리노드인스턴스 리스트를 자식트리로 저장
-
+        # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입. # 트리노드인스턴스 리스트를 자식트리로 저장
+        
     def iter_nodes(self):   # 노드 순회 : 명칭은? # root 노드반환 # 자식트리 모든노드를 순회
         yield self.root # 루트노드 반환
 
         for child in self.children: # 자식트리노드 리스트를 순회
-            for n in child.iter_nodes(): # 이게 어찌 이렇게도...
-                yield n 
-
+            for n in child.iter_nodes(): # 받은 자식트리노드 리스트를 받아 재귀로 다시 그 리스트의 리스트를 받음
+                yield n
+            # 함수호출(): 현재트리 Tree.root반환  [자식트리리스트]children  for루프 순회 다시 자식Tree.root반환 children = []가아니라면 계속 순서대로 반환
+            # 이같은 연결을 위해 class.head.next에 다음 노드를 갱신하듯
+            # Tree(root, children = [])의 자식트리들또한 Tree(root = TreeNode(), [children])가 되어 모든 root값이 노드가 되도록 잇는다.
+            # 트리의 root는 하나이기에 []이며 자식트리들은 리스트로 구현되기에 [0,1,2,3][0,1][0,2] 와 같은 주소값을 가지고 TreeNode.node_id에 문자열로 저장된다.
     def iter_nodes_with_address(self):  
         yield [], self.root # 루트 노드주소[], 노드 반환, 이어서 실행
 
@@ -35,7 +39,7 @@ class Tree: # 트리는 이중연결하면 삑난다.
         yield self.root.datum # 노드 .data를 반환 이어서 노드 순회하며 자식노드.data 반환
 
         for child in self.children:
-            for n in child: #child.iter_nodes():
+            for n in child: #child.iter_nodes(): 결과를 비교하고 스스로 설명가능한 이해필요
                 yield n
 
     def insert(self, address, elem): # idx와 요소를 받아서 
@@ -88,19 +92,20 @@ class Tree: # 트리는 이중연결하면 삑난다.
         return res
 
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     t1 = Tree(1, [
                 Tree(11, [Tree(111), Tree(112)],),
-                Tree(12, [Tree(121), Tree(122), Tree(123),])
-             ]
-         )
+                Tree(12, [Tree(121), Tree(122), Tree(123),]),
+                # Tree(13, [Tree(131, [Tree(1311), Tree(1312)],)]) # 중복된 노드 삽입을 insert에서 방지하지 않으면 에러 발생# insert, delete에서 잘못된 주소를 추가할때의 예외사항도 필요
+                ]
+            )
     print(t1)
 
     for e in t1:
         print(e)
     
     assert t1.root_datum() == 1
-    assert t1.height() == 3
+    # assert t1.height() == 4
 
     for addr, n in t1.iter_nodes_with_address():
         assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr

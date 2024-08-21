@@ -103,7 +103,7 @@ class LinkedList:
         else:
             self.head = new_node
             self.end = new_node   #self.end = self.head  다르네...
-       
+
         # if elem is None: return None
         # self.id += 1
         # append_head_elem = LinkedNode(self.id, elem, next = None)
@@ -170,8 +170,6 @@ class LinkedList:
 def __str__(self):
     sur = self.head
     while cur is not None:
-
-        neaddvep[[[[[[[[[op]]]]]]]]]
 
 class DoublyLinkedNode(Node):
     def __init__(self, node_id, datum, prev = None, next = None):
