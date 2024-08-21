@@ -142,3 +142,4 @@ if __name__ == '__main__':
         assert s1.pop() == 3
 
         assert s1.is_empty()
+        print(f'ㄴ{backend}')

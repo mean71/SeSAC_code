@@ -70,12 +70,12 @@ class Tree:
     def __str__(self):
         res = str(self.root.datum)
         
-        for child in self.children: # child 또한 Tree(TreeNode(str(idx), child)) # 자식 트리의 __str__은 알아서 다시 반복
+        for child in self.children: # child 또한 Tree(TreeNode(str(idx), child)) # 자식 트리의 __str__은 알아서 다시 반복 # for child in self.children: 로하면
             res += '\n'
             if child != self.children[-1]:# 일단 이대로 실행
                 res += '├── '
                 if child.root:
-                    res += str(child).replace('\n' ,'\n│   ') # 본인을 출력하고 자식트리가 있다면 또다시 줄바꿈하고 같은것을 반복 # 뭔가 이상하지만 일단 수정하면서 숙지 # solution을 먼저보아 당최 시도가 불가능
+                    res += str(child).replace('\n' ,'\n│   ') # 본인을 출력하고 자식트리가 있다면 또다시 줄바꿈하고 같은것을 반복
             else:
                 res += '└── '
                 if child.root:
@@ -85,30 +85,34 @@ class Tree:
 
 if __name__ == '__main__':
     t1 = Tree(1, [
-                Tree(11, [Tree(111), Tree(112)],),
+                Tree(11, [Tree(111, [Tree(1111, [Tree(11111)])]), Tree(112)],),
                 Tree(12, [Tree(121), Tree(122), Tree(123),]),
-                Tree(13, [Tree(131, [Tree(1311), Tree(1312)])])
+                # Tree(13, [Tree(131, [Tree(1311), Tree(1312)],)]) # 중복된 노드 삽입을 insert에서 방지하지 않으면 에러 발생# insert, delete에서 잘못된 주소를 추가할때의 예외사항도 필요
                 ]
             )
     print(t1)
 
-    # assert t1.root_datum() == 1
-    # assert t1.height() == 3
+    for e in t1:
+        print(e)
 
-    # for addr, n in t1.iter_nodes_with_address(): # [], node 순회
-    #     print(list(str(n.datum))[1:])
-    #     assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr # node.datum과 node.id = [idx]가 양식에 맞는지 체크 # 용도와 의도가 해석이 되지만 피곤해서 논리와 글로 정리하고 사고하는게 불가능
-    #     assert t1.search(n.datum) == addr
+    assert t1.root_datum() == 1
+    assert t1.height() == 5
+
+    for addr, n in t1.iter_nodes_with_address(): # [], node 순회
+        print(list(str(n.datum))[1:])
+        assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr # node.datum과 node.id = [idx]가 양식에 맞는지 체크 # 용도와 의도가 해석이 되지만 피곤해서 논리와 글로 정리하고 사고하는게 불가능
+        assert t1.search(n.datum) == addr
     
     
     # t1.insert([2], Tree(13, [Tree(131), Tree(132), Tree(133)]))
     # t1.insert([1, 1], Tree(122, [Tree(1221), Tree(1222)]))
-    # assert t1.height() == 4 # 길이가 늘어났는지 확인
     # print(t1)
     
 
     # assert 122 == t1.delete([1,2])
     # assert 123 == t1.delete([1,2])
+    # assert 1111 == t1.delete([0,0,0])
+    # assert t1.height == 4
 
     # for addr, n in t1.iter_nodes_with_address():
     #     assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr

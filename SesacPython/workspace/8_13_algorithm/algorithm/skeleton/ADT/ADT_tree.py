@@ -22,7 +22,6 @@ def iter_tree(tree):
 class Tree:
     def __init__(self, tree_elements, backend):
         """Intialize Tree from tree_elements dict. 
-
         Examples
             t1 = Tree({1: [
                         {2: []}, 
@@ -42,7 +41,6 @@ class Tree:
             │   └── 112
             └── 12
                 └── 121
-
         """
         self.backend = backend
         
