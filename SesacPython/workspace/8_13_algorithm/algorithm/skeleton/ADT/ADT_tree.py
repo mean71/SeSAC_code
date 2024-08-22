@@ -45,9 +45,9 @@ class Tree:
         self.backend = backend
         
         if backend == TreeDataStructure:
-            pass 
+            pass
 
-    def insert(self, address, elem):
+    def insert(self, address, elem):    
         pass 
 
     def delete(self, address):

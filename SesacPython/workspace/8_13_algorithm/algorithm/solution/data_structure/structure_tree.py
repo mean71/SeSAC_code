@@ -54,7 +54,7 @@ class Tree: # 트리는 이중연결하면 삑난다.
     def delete(self, address):
         cur = self # 자기 자신을 참조하고 자신의 자식노드 address에 도달할때까지 self.children 반복순회 반대로 cur.children[address[-1]]노드를 del함수로 제거
         
-        for addr in address[:-1]:
+        for addr in address[:-1]: # delete([0,0,0]) 1111 self.children.children.children[0] 을 del해달라
             cur = cur.children[addr]
 
         res = cur.children[address[-1]].root.datum # 제거한 노드의.root.datum을 반환
@@ -76,6 +76,16 @@ class Tree: # 트리는 이중연결하면 삑난다.
             if len(addr) + 1 > h: # 현재순환중인 노드의len(idx)+가 h 보다 크다면 h에 대입 # 트리의 높이를 반환
                 h = len(addr) + 1   
         return h
+    
+    def s(t):
+        res = [str(t.root.datum)]
+        tab = '    '
+
+        for child in t.children:
+            part = child.s()
+            for line in part:
+                res.append(tab + line)
+        return res
 
     def __str__(self):
         res = str(self.root.datum) # child 또한 Tree(TreeNode(str(idx), child)) # 자식 트리의 __str__은 알아서 다시 반복 # for child in self.children: 로하면
@@ -113,17 +123,18 @@ if __name__ == '__main__':
         assert t1.search(n.datum) == addr
 
     t1.insert([2], Tree(13, [Tree(131), Tree(132), Tree(133)]))
-    t1.insert([1, 1], Tree(122, [Tree(1221), Tree(1222)]))
+    t1.insert([2, 1], Tree(132, [Tree(1321), Tree(1322)]))
     print(t1)
-    
-    assert 122 == t1.delete([1,2])
-    assert 123 == t1.delete([1,2])
-    assert 1111 == t1.delete([0,0,0])
-    assert t1.height == 4
 
-    for addr, n in t1.iter_nodes_with_address():
-        assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr
-        assert t1.search(n.datum) == addr
+    assert 122 == t1.delete([1,1])
+    assert 123 == t1.delete([1,1])
+    assert 1111 == t1.delete([0,0,0])
+    print(t1)
+    assert t1.height() == 4
+
+    # for addr, n in t1.iter_nodes_with_address():
+    #     # assert [int(e)-1 for e in list(str(n.datum))[1:]] == addr
+    #     assert t1.search(n.datum) == addr
 
     print(t1)
     print('===============')

@@ -54,7 +54,7 @@ class LinkedList:
         #     for idx, elem in enumerate(elements):
         #         assert isinstance(elem, LinkedNode)
         #         if idx < len(elements) - 1:
-        #             elem.next = elements[idx+1]
+        #             elem.next = elements[idx+1]   
         #         size += 1
             
         #     head = elements[0]
@@ -152,6 +152,11 @@ class LinkedList:
     def return_end(self):
         return self.end.datum
     
+    def __getitem__(self, idx):
+        pass
+    def __setitem__(self, idx, elem):
+        pass
+
     def __iter__(self): # 반복자로서 호출하면
         cur = self.head
         while cur is not None:

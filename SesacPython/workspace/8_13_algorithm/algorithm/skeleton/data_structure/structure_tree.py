@@ -16,7 +16,7 @@ class Tree:
         self.root = root
         children = list(children)
 
-        self.children = children = [ Tree(TreeNode(str(idx), child)) for idx,child in enumerate(children) ] # iter_nodes(): child.root가 왜 새 방식에서만 활성화되는가는 졸리고 귀찮으니 나중에
+        self.children = children = [ TreeNode(str(idx), child) for idx,child in enumerate(children) ] # iter_nodes(): child.root가 왜 새 방식에서만 활성화되는가는 졸리고 귀찮으니 나중에
          # [ Tree(TreeNode(str(idx), child)), ... ,  ] head.next 와 같다.  모든 자식트리가 다시 부모가 되며 반복된다.
          # ***자식트리를 리스트로 넣고 for문으로 순환시키면서 linkedlist 비스무리하게 재귀적?으로 우려먹는 과정을 숙지***
 
@@ -31,14 +31,14 @@ class Tree:
     def iter_nodes_with_address(self): # idx, node
         yield [], self.root # 첫 idx는 []로 root만 뱉고
         for idx, child in enumerate(self.children): # 마찬가지로 인덱스[0,1,...]와 같이 동일하게 순회
-            for i ,n in child.iter_nodes_with_address(): # child는 Tree(TreeNode(str(idx), child))
-                yield [idx]+[i], n # [idx,i,i,i...], root값
+            for i, n in child.iter_nodes_with_address(): # child는 Tree(TreeNode(str(idx), child))
+                yield [idx] + i, n # [idx,i,i,i...], root값
 
     def __iter__(self):
         yield self.root.datum
         for child in self.children:
-            for i in child:
-                yield i.datum # 문제발생
+            for i in child: 
+                yield i # i.datum 문제발생 졸려서 보류하고 패스
 
     # def insert(self, address, elem):
     #     cur =self
@@ -62,9 +62,11 @@ class Tree:
         return self.root.datum
 
     def height(self):
+        
         h=0
-        for i,_ in self.iter_nodes_with_address():
-            if h < len(i): h = len(i)+1 # rootnode와 reaf 노드의 길이지만 2가 아닌 3
+        for i,n in self.iter_nodes_with_address():
+            if h < len(i)+1: h = len(i)+1 # 높이층위
+            print(i, n)
         return h # root 에서는 [] ,h=0, iter_nodes_with_address에서 idx리스트가 하나씩 추가, for child 돌려서 max(len([idx]))를 반환?
 
     def __str__(self):
@@ -91,6 +93,9 @@ if __name__ == '__main__':
                 ]
             )
     print(t1)
+    for i, t in t1.iter_nodes_with_address():
+        print(i)
+        print(t.datum)
 
     for e in t1:
         print(e)
