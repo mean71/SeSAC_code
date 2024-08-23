@@ -3,14 +3,14 @@ class TreeNode:
         self.node_id = node_id
         self.datum = datum 
 
-class Tree: # 트리는 이중연결하면 삑난다.
-    def __init__(self, root, children = []):# root로 받은 인자가 노드 인스턴스가 아니라면 주소'0'인 노드인스턴스로 만들어주고 root로 지정
-        if not isinstance(root, TreeNode): # 인스턴스노드일경우 '0',root로 초기화하지않고 그대로 재귀?한 노드의 root노드가 자신으로 갱신됨
+class Tree:
+    def __init__(self, root, children = []):# root로 받은 인자가 노드인스턴스가 아니라면 주소'0'인 노드인스턴스로 변환하고 root로 지정
+        if not isinstance(root, TreeNode): # 인스턴스노드일경우 '0',root로 초기화하지않고 그대로 재귀?한 노드의 root노드가 자신으로 갱신
             root = TreeNode('0', root)
         self.root = root
         
-        children = list(children) # 자식트리로 받은 요소를 리스트로 변환 -> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입.# 재귀, 자식트리들 Tree인스턴스노드로 다시 재귀, 자신의 root노드는 자기자신
-        for idx, child in enumerate(children):
+        children = list(children) # 자식트리로 받은 요소를 리스트로 변환 
+        for idx, child in enumerate(children): #-> 반복문으로 주소 인덱스와 datum 으로 분리해서 그대로 노드인스턴스로 변환하여 리스트에 다시 대입.# 재귀, 자식트리들 Tree인스턴스노드로 다시 재귀, 자신의 root노드는 자기자신
             if not isinstance(child, Tree):
                 children[idx] = Tree(root = TreeNode(str(idx), child)) # Tree(root = TreeNode(str(idx), child)) 인 이유를 정확히 이해
             
@@ -32,7 +32,18 @@ class Tree: # 트리는 이중연결하면 삑난다.
 
         for idx, child in enumerate(self.children): # 노드배열을 enumerate로 묶어 반복 다시 자기자신과 반복
             for addr, n in child.iter_nodes_with_address():
-                yield [idx] + addr, n
+                yield [idx] + addr, n # 
+        '''
+        res = []
+        es.append(([], self.root))
+
+        for idx, child in enumerate(self.children):
+            lst = child.iter_nodes_with_address()
+            for addr, node in lst:
+                new_ddr = [idx] + addr
+                res.append((new_addr, node))
+        return res
+        '''
 
     def __iter__(self):
         # print(f'__iter__ called with {self}')
@@ -73,7 +84,7 @@ class Tree: # 트리는 이중연결하면 삑난다.
     def height(self):
         h = 0
         for addr, _ in self.iter_nodes_with_address(): # 트리의 size?높이 leaf노드와 root 노드간의 연결거리 # 반환값h로 값을 초기화하고 iter_nodes_with_addressd를 순환
-            if len(addr) + 1 > h: # 현재순환중인 노드의len(idx)+가 h 보다 크다면 h에 대입 # 트리의 높이를 반환
+            if len(addr) + 1 > h: # 현재순환중인 노드의 len(idx)+가 h 보다 크다면 h에 대입 # 트리의 높이를 반환
                 h = len(addr) + 1   
         return h
     
