@@ -15,8 +15,13 @@ class Tree:
             root  = TreeNode([], root)
         self.root = root # root는 단하나뿐인 부모TreeNode인스턴스
 
+        self.children = []
         children = list(children)
-        self.children = [Tree(root = TreeNode([str(idx)],child)) for idx,child in enumerate(children)] # iter_nodes_with_address 반환주소.id를 [0,1] .data="파일명"
+        for idx,child in enumerate(children):
+            if len(child) == 2:
+                self.children.append(Tree( root = TreeNode([str(idx)],child[0]), children = child[1] ))
+            else:
+                self.children.append(Tree(root = TreeNode([str(idx)],child))) # iter_nodes_with_address 반환주소.id를 [0,1] .data="파일명"
         # 자식들은 트리의 인스턴스 노드로 변환, (idx) TreeNode .id .data로 # 이또한 children = tree(root,children[])들의 리스트 라는 구조에 대한 명확한 인지가 필요
         # self.children = children 으로 할시 문자열이 해체되어 출력 되는 과정도 해석해보기
     def iter_nodes(self): # TreeNode순회
@@ -60,7 +65,7 @@ class Tree:
                 res += str(child).replace('\n', '\n│   ')
             else:
                 res += '└── '
-                res += str(child).replace('\n', '\n│   ')
+                res += str(child).replace('\n', '\n     ')
         return res
     def s(t): # 서비스 문제
         '''
