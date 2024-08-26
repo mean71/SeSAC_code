@@ -34,7 +34,7 @@ class Tree:
         yield self.root.id, self.root
         for idx, child in enumerate(self.children):
             for i, n in child.iter_nodes_with_address():
-                yield [idx] + i, n #  # yield [idx] + child.root.id, n # 이따구로 하면 안될듯하다. # n.root.data 될리가.
+                yield [str(idx)] + i, n #  # yield [idx] + child.root.id, n # 이따구로 하면 안될듯하다. # n.root.data 될리가.
     def __iter__(self): # TreeNode.data순회
         yield self.root.data #'\\' 예시 : skeleton\os_tree_structure class.py
         for child in self.children:
@@ -125,19 +125,13 @@ if __name__ == '__main__':
     print('\n for i in dr: print(i)')
     for i in dr: print(i)
 
-    print('\n for i in dr.iter_nodes_with_address(): print(i)')
+    print('\n for i in dr.iter_nodes_with_address(): print(adr, data.data)')
     for adr,data in dr.iter_nodes_with_address(): print(adr,data.data)
 
-    # print()
+    print('\n print(dr.height()) : ',dr.height())
 
     # print()
     # dr.s(?)
-
-
-
-
-
-
 
 
 

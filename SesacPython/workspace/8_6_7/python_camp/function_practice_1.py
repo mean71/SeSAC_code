@@ -96,7 +96,7 @@ def sort1_min(lst):
     n = len(lst)
     
     while len(res) < n:
-        m = my_min(c, lambda x, y: x if x > y else y) 
+        m = my_min(c, lambda x, y: x if x > y else y)
         res.append(m) 
         c.remove(m) 
         
