@@ -39,15 +39,11 @@ class Tree:
                 yield n
         # for n in self.iter_nodes: print(n.data)
 
-    def iter_nodes_with_address(
-        self,
-    ):  # idx로 엮어서 노드위치 값 생성 TreeNode.id , root = TreeNode(id,data) 순회
+    def iter_nodes_with_address(self):  # idx로 엮어서 노드위치 값 생성 TreeNode.id , root = TreeNode(id,data) 순회
         yield self.root.id, self.root
         for idx, child in enumerate(self.children):
             for i, n in child.iter_nodes_with_address():
-                yield [
-                    str(idx)
-                ] + i, n  #  # yield [idx] + child.root.id, n # 이따구로 하면 안될듯하다. # n.root.data 될리가.
+                yield [str(idx)] + i, n  #  # yield [idx] + child.root.id, n # 이따구로 하면 안될듯하다. # n.root.data 될리가.
 
     def __iter__(self):  # TreeNode.data순회
         yield self.root.data  #'\\' 예시 : skeleton\os_tree_structure class.py
