@@ -22,13 +22,9 @@ class Tree:
         children = list(children)
         for idx, child in enumerate(children):
             if len(child) == 2:
-                self.children.append(
-                    Tree(root=TreeNode([str(idx)], child[0]), children=child[1])
-                )
+                self.children.append(Tree(root=TreeNode([str(idx)], child[0]), children=child[1]))
             else:
-                self.children.append(
-                    Tree(root=TreeNode([str(idx)], child))
-                )  # iter_nodes_with_address 반환주소.id를 [0,1] .data="파일명"
+                self.children.append(Tree(root=TreeNode([str(idx)], child)))  # iter_nodes_with_address 반환주소.id를 [0,1] .data="파일명"
         # 자식들은 트리의 인스턴스 노드로 변환, (idx) TreeNode .id .data로 # 이또한 children = tree(root,children[])들의 리스트 라는 구조에 대한 명확한 인지가 필요
         # self.children = children 으로 할시 문자열이 해체되어 출력 되는 과정도 해석해보기
 
@@ -75,11 +71,7 @@ class Tree:
 
     def __str__(self):
         res = str(self.root.data)
-        for (
-            child
-        ) in (
-            self.children
-        ):  # child = Tree(TreeNode,[...]) 즉 반복문 안에서 __str__의 출력으로 들어가면? 자식트리가 []가 될때까지 재귀가 시작된다.
+        for child in (self.children):  # child = Tree(TreeNode,[...]) 즉 반복문 안에서 __str__의 출력으로 들어가면? 자식트리가 []가 될때까지 재귀가 시작된다.
             res += "\n"  # __str__이라 "문자열로 호출"될때 한정. # 문자열로 만들어줘야 재귀가 된다. str(child)
             if child != self.children[-1]:
                 res += "├── "
@@ -138,7 +130,9 @@ if __name__ == "__main__":
             "global_variables.py",
             "os_tree_structure.py",
             "os_tree_structure class",
-            ("sorting_8_12/", ["measure_performance.py", "sorting.py"]),
+            ("sorting_8_12/",
+              ["measure_performance.py", "sorting.py"]
+              ),
             "subway_map.py",
         ],
     )
