@@ -31,7 +31,6 @@ string = "abc"
 string = string + "d"
 print(string)  # 출력 : abcd
 
-
 # f-string : 문자열 포매팅
 # 문자열 포매팅 : 문자열 내부에 변수 또는 데이터를 삽입하는 방법
 # 자기소개 출력 코드

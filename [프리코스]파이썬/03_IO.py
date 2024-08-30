@@ -14,7 +14,6 @@ word2 = "world"
 # 변수를 , 기준으로 출력
 print(word1, word2)
 
-
 # end 옵션
 # 출력 결과의 마지막 문자를 결정하는 옵션
 # 기본값 : 줄바꿈(개행 문자)
@@ -32,7 +31,6 @@ email = input("이메일을 입력해주세요 : ") # 입력받은 데이터를 
 print(name)
 print(email)
 
-
 # number = input() # 프롬프트(안내 메세지) 없이 input() 기능을 사용할 수 있다.
 number = input("숫자를 입력해주세요. : ")
 
@@ -46,8 +44,5 @@ print(type(number))
 print(int(number)) # 정수형으로 변환
 print(float(number)) # 실수형으로 변환
 
-
 # input() : 할당(X)
 # 사용자에게 데이터를 입력 받는 도구
-
-

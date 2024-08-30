@@ -22,7 +22,6 @@ number2 = 1
 if number2 == 1:  # 조건식이 참(True)이면 내부 코드 블럭을 실행
     print(number2)
 
-
 # 거짓(False)이면 어떤 코드를 실행? -> else 키워드
 number2 = 2
 # number2가 1과 같다면 number2를 출력 아니면 X 를 출력

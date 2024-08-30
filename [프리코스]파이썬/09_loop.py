@@ -28,7 +28,6 @@ for number in list2:
     result = number + 1
     print(result)
 
-
 # 문제. 문자열 형태의 정수가 저장된 리스트를 반복해서
 # 각 원소를 정수형(int)로 변환해서 출력(type())
 # 정수형 원소가 저장된 새로운 리스트를 생성해서 출력하세요.
@@ -43,7 +42,6 @@ for string in list3:
     # print(number, type(number))
     list4.append(number)
     print(list4)
-
 
 # 레인지(range)의 for 반복문
 # 리스트와 사용법은 동일
@@ -87,7 +85,6 @@ for index in range(0, end):
     # print(index)
     # 위치(index)를 활용해서 원소에 접근 후 출력
     print(number_list[index])
-
 
 # 문제. 위치(index)가 3 이상인 원소만 출력하는 코드 작성
 # 출력 : 7 2 1 9 10

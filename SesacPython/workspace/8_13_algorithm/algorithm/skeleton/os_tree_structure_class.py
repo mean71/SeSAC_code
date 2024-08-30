@@ -16,7 +16,7 @@ class Tree:
     def __init__(self, root, children=[]):
         if not isinstance(root, TreeNode):
             root = TreeNode([], root)
-        self.root = root  # root는 단하나뿐인 부모TreeNode인스턴스
+        self.root = root  # root는 단하나뿐인 부모TreeNode인스턴스  
 
         self.children = []
         children = list(children)

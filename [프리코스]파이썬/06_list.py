@@ -42,7 +42,6 @@ print(list7)
 list8 = list7 * 5
 print(list8)
 
-
 # 리스트 인덱싱(indexing)
 # 위치(index)를 사용해서 리스트 내부 원소(데이터)에 접근하는 방법
 
@@ -63,7 +62,6 @@ print(number_list[2])
 # 마지막 위치의 원소를 출력
 print(number_list[-1])
 
-
 # 인덱싱을 통한 원소(데이터)의 수정(재할당)
 """
 number = 1
@@ -74,7 +72,6 @@ number = 2
 # 위치(인덱스)    0, 1, 2, 3, 4
 number_list[2] = 10
 print(number_list)
-
 
 # 슬라이싱
 # 리스트의 특정 구간을 분할
@@ -93,7 +90,6 @@ print(slice1)
 # (1), 2, (3), 4, 5
 slice2 = number_list[0:4:2]
 print(slice2)  # 결과 : [1, 3]
-
 
 # 음수 인덱싱을 활용한 슬라이싱
 # 뒤에서 세 번째부터 뒤에서 첫 번째까지 슬라이싱
