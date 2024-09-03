@@ -70,17 +70,11 @@ def 함수명(매개변수):
 def 함수명():
     매개변수가 없는 함수
 """
-
-
 # 매개변수가 없는 함수
 # 1+1 을 돌려주는(반환하는) 함수
-
-
 def func_1():
     result = 1 + 1
-
     return result
-
 
 # 함수의 호출(call)
 # 함수를 실행할 때 입력해야할 값(매개변수)이 없어서
@@ -91,12 +85,9 @@ print(call_1)
 # 매개변수가 있는 함수
 # 입력 받은 값에 + 1 해주는 함수
 
-
 def func_2(number):
     result = number + 1
-
     return result
-
 
 # 함수의 호출(call)
 # 변수 call_2에는 할당이 된다.
@@ -104,12 +95,9 @@ def func_2(number):
 call_2 = func_2(10)
 print(call_2)
 
-
 def plus_one(number):
     result = number + 1
-
     return result
-
 
 call_3 = plus_one(2)
 print(call_3)
@@ -122,12 +110,10 @@ print(call_3)
 # string = f"더하기 1 결과는 {입력 받은 값 + 1}"
 # 변수 string 을 결과 값으로 돌려준다.
 
-
 def func_3(number):
     result = number + 1
     string = f"더하기 1 결과는 {result}"
     return string
-
 
 call_4 = func_3(20)
 print(call_4)
@@ -136,19 +122,13 @@ call_5 = func_3(10)
 print(call_5)
 # 인자 / 인자값 / argument
 # 함수에 전달하는(입력하는) 값
-
-
 """
 def 함수명(매개변수1, 매개변수2, 매개변수3, 매개변수4, ...):
     함수 내부 동작 코드 블럭
-
     return 함수를 호출한 위치에 돌려줄 값
-
 # 함수 호출
 함수명(인자1, 입력값2, 입력값3, ...)
 """
-
-
 # 문제
 # 매개변수 2개인 함수
 # 매개변수 1의 이름 : number1
@@ -157,7 +137,6 @@ def 함수명(매개변수1, 매개변수2, 매개변수3, 매개변수4, ...):
 def func4(number1, number2):
     result = number1 + number2
     return result
-
 
 # 함수의 호출 코드
 # 함수 인자 값으로 정수 1과 정수2를 전달
@@ -176,7 +155,6 @@ print(call_7)
 # 2. 만약 y가 크다면 결과값으로 y를 돌려준다.
 # 3. 만약 x와 y가 같다면 문자열 "같다"를 돌려준다.
 
-
 def func_5(x, y):
     if x > y:
         # 코드 블럭의 구분
@@ -187,7 +165,6 @@ def func_5(x, y):
     if x == y:
         return "같다"
 
-
 call_8 = func_5(2, 1)
 print(f"call_8에 저장된 값 : {call_8}")
 call_9 = func_5(2, 3)
@@ -195,21 +172,17 @@ print(f"call_9 = {call_9}")
 call_10 = func_5(2, 2)
 print(f"call_10 = {call_10}")
 
-
 def func_6(x, y):
-    return x
     if x > y:
         return x
-
+    else: return y
 
 # len() : 컨테이너 자료형의 길이를 반환해주는 함수
 # len()을 직접 구현
 
-
 def len(container):
     # 어떻게 하면 컨테이너 자료형의 원소의 개수를 카운트할 수 있을까?
     # 원소의 개수만큼 반복하는 반복문 코드를 작성
-
     # 원소의 개수 만큼 1씩 증가할 변수
     result = 0
 
@@ -217,13 +190,11 @@ def len(container):
         print(element)  # 컨테이너 내부 원소를 출력
         # 반복문 내부에서 1 만큼 증가하는 코드
         result = result + 1
-
         # return이 반복문 내부에 있다면
         # 반복이 1번만 일어나고 함수(반복문) 종료
 
     # 원소의 개수만큼 반복해서 더하기 1을 한 값을 돌려준다.
     return result
-
 
 list_1 = [3, 2, 5, 1, 2]
 length = len(list_1)
