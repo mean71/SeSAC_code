@@ -57,39 +57,47 @@ def parse_empty_string(): # 구문해석_빈_문자열이 들어왔을시 리턴
     return{'node':"''",'rule':0}
 def default_node_information(text, offset): # 기본 노드 정보
     res={}
-    res={'node':text,'start':offset,'and':len(text)-1}
+    res={
+        'node':text,
+        'start':offset,
+        'and':len(text)-1+offset
+        }
     return res
         # 'node': text,
         # 'start': 0,
         # 'end': 1,
         # 'rule': 1,
     
-                'left': {
-                'node': '(',
-                'start': 0,
-                'end': 0,
-            },
-            'mid': {
-                'node': '',
-                'rule': 0,
-            },
-            'right': {
-                'node': ')',
-                'start': 1,
-                'end': 1,
-            }
+            #     'left': {
+            #     'node': '(',
+            #     'start': 0,
+            #     'end': 0,
+            # },
+            # 'mid': {
+            #     'node': '',
+            #     'rule': 0,
+            # },
+            # 'right': {
+            #     'node': ')',
+            #     'start': 1,
+            #     'end': 1,
+            # }
 
 def update_rule1_data(text, res):       # res : result 결과?
-    assert determine_if_rule1(text)     # 룰1을 적용할조건인지 결정하는 함수가 거짓일시 res값반환
+    assert determine_if_rule1(text)     # 룰1을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
+        
     return res                          # 구문분석_괄호()함수의 룰1결과예시를 참조하여 res로 반환
 def update_rule1_mid(text, res):        # 
-    assert determine_if_rule1(text)     # 룰1을 적용할조건인지 결정하는 함수가 거짓일시 res값반환
+    assert determine_if_rule1(text)     # 룰1을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
+    
     return res                          # 구문분석_괄호()함수의 룰1결과예시를 참조하여 res로 반환
 def update_rule2_data(text, res):
-    assert determine_if_rule2(text)     # 룰2을 적용할조건인지 결정하는 함수가 거짓일시 res값반환
+    assert determine_if_rule2(text)     # 룰2을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
+    
     return res                          # 구문분석_괄호()함수의 룰2결과예시를 참조하여 res로 반환
 def update_rule2_nodes(text, res):
-    assert determine_if_rule2(text)     # 룰2을 적용할조건인지 결정하는 함수가 거짓일시 res값반환
+    assert determine_if_rule2(text)     # 룰2을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
+    
     return res                          # 구문분석_괄호()함수의 룰2결과예시를 참조하여 res로 반환
 
 def parse_parentheses(text): # (구문문석-pars_괄호_parentheses)

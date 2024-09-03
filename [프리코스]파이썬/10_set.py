@@ -43,7 +43,7 @@ print(set_3)
 # 집합.discard(값): 집합 자료형에서 값에 해당하는 원소 삭제하는 도구
 
 # 변수 set_3 에서 원소 2를 삭제를 하는 코드 작성
-# remove와 discard를 한 번씩 활용하는 코드 작성
+# remove와 discard를 한 번씩 활용하는 코드 작성 
 
 # remove -> discard
 print("remove -> discard")
@@ -74,7 +74,6 @@ print(diff_set)
 # 교집합 연산자 & (7 특수문자)
 inter_set = set_4 & set_5
 print(inter_set)
-
 
 # 집합의 생성
 # 빈 집합을 생성?
