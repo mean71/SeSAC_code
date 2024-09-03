@@ -12,12 +12,10 @@
 # 더하기 함수, 빼기 함수, 나누기 함수, ..., 수학과 관련된 함수
 # 수학과 관련된 함수들을 모아서 다른 파일로 관리하자 -> 모듈
 
-
 # 파일(모듈)을 불러오기
 
 # math_module 파일을 불러온다.
 import math_module
-
 
 # math_module에 있는 add 함수 호출
 result = math_module.add(1, 2)
@@ -34,7 +32,6 @@ print(f"result = {result}")
 
 # pip install requests
 # pip3 install requests
-
 
 # from 모듈명 import 함수명
 # 특정 모듈에서 특정 함수만 불러오는 방법
@@ -60,7 +57,6 @@ from math_module import add as math_add
 
 # import pandas as pd
 
-
 # 파이썬 내장 모듈
 # 모듈, 라이브러리, 패키지
 # random, time
@@ -76,7 +72,6 @@ print(random_number)
 # 리스트 중 하나의 원소를 랜덤으로 선택해서 돌려준다.
 random_choice = random.choice([1, 2, 3, 4, 5])
 print(random_choice)
-
 
 import time
 
@@ -115,7 +110,6 @@ print("타이머 종료")
 # 1960년 1월 1일 0시 0초 부터 현재까지의 차이를 초로 변환한 숫자를 돌려준다.
 second = time.time()
 print(second)
-
 
 # 프로그램의 실행 시간 측정
 
