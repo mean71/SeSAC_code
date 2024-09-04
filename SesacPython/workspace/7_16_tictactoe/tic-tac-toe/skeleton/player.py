@@ -8,5 +8,5 @@ def random_player(x_or_o, x_positions, o_positions):
         move = (x, y)
     return move 
 
-def smart_player(x_or_o, x_positions, o_positons):
-    return random_player(x_or_o, x_positions, o_poistions)
+def smart_player(x_or_o, x_positions, o_positions):
+    return random_player(x_or_o, x_positions, o_positions)

@@ -44,7 +44,8 @@ class Tree:
                 res.append((new_addr, node))
         return res
         '''
-
+    
+    
     def __iter__(self):
         # print(f'__iter__ called with {self}')
         yield self.root.datum # 노드 .data를 반환 이어서 노드 순회하며 자식노드.data 반환

@@ -115,11 +115,11 @@ def sierpinski_triangle(n):
 
 # --------------------------------------------
 # 2. 여러 리스트 관련 함수들 구현해보기
-# 아래 함수들은 대부분 itertools에 있는 함수들임. 
-# itertools를 쓰지 말고 구현해 볼 것.  
+# 아래 함수들은 대부분 itertools에 있는 함수들임.
+# itertools를 쓰지 말고 구현해 볼 것.
 # 1) accumulate(lst, function = lambda x, y : x+y)
-# lst의 각 원소들에 대해서, function을 누적하여 적용한 리스트를 반환. 
-# lst -> [lst[0], f(lst[0], lst[1]), f(lst[2], f(lst[1], lst[0])), ...] 
+# lst의 각 원소들에 대해서, function을 누적하여 적용한 리스트를 반환.
+# lst -> [lst[0], f(lst[0], lst[1]), f(lst[2], f(lst[1], lst[0])), ...]
 # --------------------------------------------
 def accumulate(lst, function = lambda x, y: x+y):
     nlst=[lst[0]]
@@ -153,8 +153,8 @@ def batched(lst, n):
 #         (3,4), (3,5), (3,6),] 
 # --------------------------------------------
 def product(args):
-
-    pass
+    return [ tuple([j[i] for j in args if j[i]]) for i in range(max(map(len, args)))]
+product([[1,2,3], [4,5,6]])
 # write your code here
 
 # --------------------------------------------

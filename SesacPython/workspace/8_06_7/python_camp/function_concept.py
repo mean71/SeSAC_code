@@ -6,19 +6,18 @@ import math
 # 3) input이 정해지지 않은 갯수만큼 있는 함수 
 # --------------------------------------------
 def pi():
-    """원주율을 소숫점 두 자리까지 반환하는 함수"""
-    return int(f'{math.pi:.2f}')
+    return f'{math.pi:.2f}'
+"""원주율을 소숫점 두 자리까지 반환하는 함수"""
 def left_append(lst, elem):
-    """lst의 왼쪽에 elem을 넣고, lst를 반환하는 함수"""
     lst.insert(0,elem)
     return lst
+"""lst의 왼쪽에 elem을 넣고, lst를 반환하는 함수"""
 def left_extend(lst, *elem):
-    """lst의 왼쪽에 정해지지 않은 갯수의 elem을 넣고 lst를 반환하는 함수 """
-    lst.insert(0,x) for x in *lst
+    [lst.insert(0,x) for x in elem]
     return lst
-
-lst=[1,2,3,4]
+"""lst의 왼쪽에 정해지지 않은 갯수의 elem을 넣고 lst를 반환하는 함수 """
 print(pi())
+lst=[1,2,3,4]
 print(f'left_append: {left_append(lst, math.pi)} , left_extend: {left_extend(lst, *lst)}')
 # --------------------------------------------
 # 2. 함수의 call stack 알아보기 
@@ -34,5 +33,8 @@ def b():
 def c(lst):
     print(lst[0])
     return c(lst[1:]) 
-
-c(list(range(10)))
+try:
+    print(c([i for i in range(10)]))
+except:
+    pass
+# c(lst) 호출 >>
