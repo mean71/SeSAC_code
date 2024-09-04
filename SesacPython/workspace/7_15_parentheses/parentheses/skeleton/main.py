@@ -82,19 +82,22 @@ def default_node_information(text, offset): # 기본 노드 정보
             #     'start': 1,
             #     'end': 1,
             # }
-
 def update_rule1_data(text, res):       # res : result 결과?
     assert determine_if_rule1(text)     # 룰1을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
-        
+    find_matching_id = find_matching_pair(text, 0)
+    res['rule']=1
     return res                          # 구문분석_괄호()함수의 룰1결과예시를 참조하여 res로 반환
+
 def update_rule1_mid(text, res):        # 
     assert determine_if_rule1(text)     # 룰1을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
     
     return res                          # 구문분석_괄호()함수의 룰1결과예시를 참조하여 res로 반환
+
 def update_rule2_data(text, res):
     assert determine_if_rule2(text)     # 룰2을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
-    
+    res['rule']=2
     return res                          # 구문분석_괄호()함수의 룰2결과예시를 참조하여 res로 반환
+
 def update_rule2_nodes(text, res):
     assert determine_if_rule2(text)     # 룰2을 적용할조건인지 결정하는 함수가 참인지 검사하고 res값반환
     

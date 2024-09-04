@@ -3,7 +3,7 @@ sys.path.append('../data_structure')
 
 try:
     from linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
-    from structure_tree import Tree as TreeDataStructure
+    from tree import Tree as TreeDataStructure
 except ModuleNotFoundError:
     from data_structure.linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
     from data_structure.structure_tree import Tree as TreeDataStructure
