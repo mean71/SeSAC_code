@@ -463,7 +463,7 @@ INSERT INTO 고객 VALUES ('banana', '김선우', 25, 'vip', '간호사', 2500);
 INSERT INTO 고객 VALUES ('carrot', '고명석', 28, 'gold', '교사', 4500);
 INSERT INTO 고객 VALUES ('orange', '김용욱', 22, 'silver', '학생', 0);
 INSERT INTO 고객 VALUES ('melon', '성원용', 35, 'gold', '회사원', 5000);
-INSERT INTO 고객 VALUES ('peach', '오형준', NULL, 'silver', '의사', 300);
+INSERT INTO 고객 VALUES ('peach', '오형준', NULL, 'silver', '의사', 300);    
 INSERT INTO 고객 VALUES ('pear', '채광주', 31, 'silver', '회사원', 500);
 
 INSERT INTO 제품 VALUES('p01', '그냥만두', 5000, 4500, '대한식품');

@@ -71,7 +71,7 @@ class Tree:
 
     def __str__(self):
         res = str(self.root.data)
-        for child in (self.children):  # child = Tree(TreeNode,[...]) 즉 반복문 안에서 __str__의 출력으로 들어가면? 자식트리가 []가 될때까지 재귀가 시작된다.
+        for child in self.children:  # child = Tree(TreeNode,[...]) 즉 반복문 안에서 __str__의 출력으로 들어가면? 자식트리가 []가 될때까지 재귀가 시작된다.
             res += "\n"  # __str__이라 "문자열로 호출"될때 한정. # 문자열로 만들어줘야 재귀가 된다. str(child)
             if child != self.children[-1]:
                 res += "├── "
@@ -122,7 +122,10 @@ if __name__ == "__main__":
                     "structure_tree.py",
                     (
                         "__pycache__/",
-                        ["linked_list.cpython-312.pyc", "node.cpython-312.pyc"],
+                        [
+                            "linked_list.cpython-312.pyc",
+                            "node.cpython-312.pyc"
+                        ],
                     ),
                 ],
             ),

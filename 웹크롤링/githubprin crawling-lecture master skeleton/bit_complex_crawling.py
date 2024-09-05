@@ -1,7 +1,7 @@
 import requests 
 from bs4 import BeautifulSoup
 
-from time import time
+from time import time, sleep
 import os, pickle, json
 # pip install beautifulsoup4
 
@@ -18,9 +18,9 @@ def crawl_press_names_and_codes():
         soup = BeautifulSoup(response.text, 'html.parser')
         
         for li in soup.find_all('li', {'class': 'ca_item _channel_item'}):
-            press_name = li.find('div', {'class': 'cs_name'}).text
+            press_name = li.find('div', {'class': 'cs_name'})
             press_code = li['data-office']
-            code2name[press_code] = press_name
+            code2name[press_code] = press_name.text()
             
             # print(press_code, press_name)
         
