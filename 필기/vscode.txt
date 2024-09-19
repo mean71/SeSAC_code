@@ -1,0 +1,249 @@
+
+컨 `과 컨j의 차이점은?
+
+2. 필수 단축키
+  파일 및 편집 관련
+  새 파일 생성: Ctrl+N
+  파일 열기: Ctrl+O
+  파일 저장: Ctrl+S
+  모든 파일 저장: Ctrl+K S
+  파일 닫기: Ctrl+W
+  커서위치 메뉴열기 :Shift + F10
+
+편집 관련
+  Shift + Alt + 방향키 : 줄 복사
+  Alt + 방향키 : 줄 이동
+  Ctrl + Alt + 방향키 : 커서복사
+
+함수,변수로 추출: Ctrl + Shift + R
+
+탐색 관련
+  Ctrl + Shift + L : 파일내 같은단어 모두 선택
+  Ctrl + Shift + F : 파일 내 검색
+
+  F12 : 정의로 이동
+  Shift + Alt + F12 : 모든참조찾기
+  Ctrl + - (이전), Ctrl + Shift + - (다음) : 이전/다음 편집으로 이동: 
+  Ctrl + Shift + T : Re Open
+  Ctrl + P : 파일검색
+  명령 팔레트 열기: Ctrl + Shift + P
+
+보기 관련
+  전체 화면: F11
+  사이드바 열기/닫기: Ctrl + B
+
+  Ctrl + Shift + Alt 단축키
+  + (방향키)/(F)/(Right)/(Left)/(Up)/(Down):
+  줄 복사 / 문서 포맷팅 / AST 선택 확장 / AST 선택 축소 / 커서복제 위/아래
+
+
+
+
+
+
+
+3. 작동 원리
+확장 프로그램: VSCode는 다양한 확장 프로그램을 지원하여 기능을 확장할 수 있습니다. 예를 들어, Python, Jupyter, GitLens 등의 확장을 설치하면 개발 환경을 더 강력하게 만들 수 있습니다.
+터미널: VSCode의 통합 터미널은 직접 명령어를 입력하고 실행할 수 있는 기능을 제공합니다. 이 터미널은 프로젝트와 동일한 디렉터리에서 실행되므로, 편리하게 사용할 수 있습니다.
+버전 관리: Git 통합 기능을 통해 소스 코드 버전 관리를 쉽게 할 수 있습니다. 변경 사항을 확인하고, 커밋 및 푸시 작업을 VSCode 내에서 할 수 있습니다.
+
+4. 실무 필수 기능
+  디버깅: VSCode는 강력한 디버깅 기능을 제공합니다. 브레이크포인트를 설정하고, 코드 실행을 중단하고, 변수 값을 검사할 수 있습니다. F5로 디버깅을 시작할 수 있습니다.
+  코드 스니펫: 자주 사용하는 코드 블록을 저장하고 쉽게 삽입할 수 있습니다. 예를 들어, if 문을 입력할 때 if를 입력하고 Tab 키를 누르면 기본 구조가 자동으로 생성됩니다.
+  테마와 레이아웃: VSCode의 테마를 변경해보세요. Ctrl + K Ctrl + T로 테마를 선택할 수 있습니다. 자신에게 맞는 색상과 레이아웃을 설정하면 작업이 더 편해집니다.
+
+5. 연습과 활용
+  프로젝트 설정: 작은 프로젝트를 시작하여 VSCode의 다양한 기능을 실습해보세요. Python 프로젝트나 간단한 웹 애플리케이션을 만들어보는 것도 좋습니다.
+  단축키 연습: 자주 사용하는 단축키를 반복적으로 사용하여 익숙해지세요. 초기에는 어렵게 느껴질 수 있지만, 점차 빠르게 작업할 수 있게 됩니다.
+
+1. 사용자 설정 최적화
+  설정 파일 수정: Ctrl + ,를 눌러 설정을 열고, JSON 형식으로 직접 설정을 수정할 수 있습니다. 예를 들어, 탭 크기나 자동 완성 관련 설정을 변경할 수 있습니다.
+  키 바인딩 변경: Ctrl + K Ctrl + S를 통해 키 바인딩을 관리하고, 자신에게 맞는 단축키로 변경할 수 있습니다.
+2. 코드 포맷팅
+  자동 포맷팅: 파일을 저장할 때 자동으로 코드를 포맷할 수 있습니다. 이를 위해 설정에서 "editor.formatOnSave": true를 활성화하세요.
+  Prettier 사용: JavaScript, HTML, CSS 등 다양한 언어에 대해 일관된 코드 스타일을 적용할 수 있는 Prettier 확장을 설치해보세요.
+3. 멀티 커서 기능
+  멀티 커서 사용: Alt 키를 누른 채로 클릭하면 여러 위치에 커서를 추가할 수 있습니다. 이를 통해 동시에 여러 줄을 편집할 수 있습니다.
+4. 코드 단축키 활용
+  스니펫 사용: 자주 사용하는 코드 템플릿을 스니펫으로 저장해두면, 필요한 때에 빠르게 삽입할 수 있습니다. 사용자 정의 스니펫을 생성하려면 File > Preferences > User Snippets에서 설정하세요.
+5. Git 통합 활용
+  버전 관리: Git 통합 기능을 활용하여 변경 사항을 쉽게 관리하세요. Ctrl + Shift + G로 Git 패널을 열고, 변경 사항을 쉽게 커밋하고 푸시할 수 있습니다.
+  브랜치 관리: 브랜치를 쉽게 생성하고 전환할 수 있습니다. Git 패널에서 브랜치 목록을 확인하고 작업할 수 있습니다.
+10. 디버깅 효율화
+  디버그 구성: Run and Debug 패널에서 다양한 디버깅 구성을 추가 가능. 특정 환경에 맞는 설정을 미리 저장해두면 유용합니다.
+  디버그 콘솔 활용: 디버깅 중 변수 값을 확인하거나 명령어를 실행할 수 있는 디버그 콘솔을 활용하세요.
+11. 작업 영역 활용
+  작업 공간 설정: 여러 프로젝트를 다루기 위해 작업 공간 설정 가능. File > Add Folder to Workspace를 통해 여러 폴더를 추가하고, 작업 공간 설정을 저장할 수 있습니다.
+12. 마크다운 미리보기
+  마크다운 미리보기:Ctrl + K V.
+13. 확장 프로그램 추천
+  Live Server: HTML/CSS/JavaScript 파일을 실시간으로 미리보기. 웹 개발 시 매우 유용.
+  Bracket Pair Colorizer: 괄호의 쌍을 색상으로 구분.
+14. 커뮤니티와 자료 활용
+  VSCode 문서: VSCode의 공식 문서를 참고하여 다양한 기능과 팁을 배워보세요. VSCode 공식 문서
+  커뮤니티 참여: Stack Overflow, GitHub, Reddit 등에서 VSCode 등에서 질문하고 정보 공유.
+
+
+
+기본 편집
+  Tab/Shift + Tab : 들여/내어 쓰기
+  Ctrl+(X/C/V/Z/Y)  (잘라내기/복사/붙여넣기/실행취소/재실행)
+  Ctrl+(F/H)        텍스트(검색/&바꾸기)
+  Ctrl+(D/F2)       해당 단어 (추가/모두)선택
+  Ctrl+Shift+K      줄 삭제
+  Ctrl+Enter        커서 위에 빈줄 생성
+  Ctrl+Shift+Enter  커서 아래에 빈줄 생성
+  Alt+(Up/Down)     라인 (위/아래) 이동
+  Shift+Alt+Down    그줄을 아래로 복제
+  Shift+Alt+Up      그중을 위로 복제
+  
+  Ctrl+K Ctrl+D     현재 단어 끝에 도달 계속 같은 단어 끝으로 이동
+  Ctrl+U            직전 커서 명령 취소
+  Shift+Alt+I       여러 라인을 선택 후 각 라인 끝에 커서를 위치
+  Ctrl+Shift+L      현재 선택 부분과 동일한 모든 것을 선택
+  Ctrl+I            커서가 위치한 라인 선택
+  Ctrl+Alt+Down     다중 커서 아래로
+  Ctrl+Alt+Up       다중 커서 위로
+  Ctrl+Shift+\      매칭되는 괄호로 점프
+  Ctrl + [ / ]      라인 들여/내어 쓰기
+  Home              라인 시작으로
+  End               라인 끝으로
+  Ctrl+(Home/End)   파일의 맨 (처음/끝)으로
+  Ctrl+(Up/Down)    커서는 두고 페이지를 (상/하)이동
+  Alt+Page(Up/Down) 커서는 두고 한 페이지 (상/하)이동
+  Ctrl+Shift+([/])  커서가 있는 블럭 (접기/펴기)
+  Ctrl+K Ctrl+([/]) 괄호아래 모든 블럭 (접기/펴기)
+  Ctrl+K Ctrl+(0/J) 파일의 모든 블럭 (접기/펴기)
+  Ctrl+K Ctrl+C     그 줄을 주석으로 변경
+  Ctrl+K Ctrl+U     주석 제거
+  Ctrl+/            주석 토글
+  Shift+Alt+A       선택 블럭 /**/ 주석 토글
+  (Shift+F3 / F3)   (다음부터/이전부터) 찾기
+  Alt+Enter         찾은 단어와 같은 단어를 모두 선택, 다중커서
+  Alt+C             검색 시 대소문자 구분 토글
+  Alt+R             Toggle Find Regex
+  Alt+W             정확히 그 단어만 토글
+  Ctrl+M            Toggle Use of Tab Key for Setting Focus
+  unassigned        Toggle Render Whitespace
+  Alt+Z             자동 줄바꿈 토글
+
+추가 편집 기능
+  Ctrl+Space        자동 완성 추천
+  Ctrl+Shift+Space  Trigger Parameter Hints
+  Shift+Alt+F       Format Document
+  Ctrl+K Ctrl+F     Format Selection
+  F12               Go to Definition
+  Alt+F12           Peek Definition
+  Ctrl+K F12        Open Definition to the Side
+  Ctrl+.            Quick Fix
+  Shift+F12         Show References
+  F2                Rename Symbol
+  Ctrl+Shift+.      Replace with Next Value
+  Ctrl+Shift+,      Replace with Previous Value
+  Shift+Alt+Right   Expand AST Select
+  Shift+Alt+Left    Shrink AST Select
+  Ctrl+K Ctrl+X     Trim Trailing Whitespace
+  Ctrl+K M          Change Language Mode
+
+이동
+  Ctrl+T            Show All Symbols
+  Ctrl+G            줄번호로 이동
+  Ctrl+P            Go to File..., Quick Open
+  Ctrl+Shift+O      Go to Symbol...
+  Ctrl+Shift+M      Show Problems
+  F8                Go to Next Error or Warning
+  Shift+F8          Go to Previous Error or Warning
+  Ctrl+Shift+P      모든 명령어 보기
+  Ctrl+Shift+Tab    Navigate Editor Group History
+  Alt+Left          구문 단위로 뒤로 이동
+  Alt+Right         구문 단위로 앞으로 이동
+
+
+편집기 창 관리
+
+  Ctrl+Shift+N          새 창 열기
+  Ctrl+F4               프로그램 종료
+  Ctrl+K F              현재 폴더 닫기
+  Ctrl+\                창 수직 나누기
+  Ctrl+(1/2/3)          (1/2/3)번 탭으로 이동
+  Ctrl+K (Ctrl+(Left/Right))    (좌/우)탭으로 이동
+  Ctrl+K +(Left/Right)  (왼쪽/오른쪽) 탭으로 이동
+  Ctrl+Shift+Page(Up/Down)  현재 탭 위치 (좌/우)이동
+
+파일 다루기
+
+  Ctrl+(N/O/S)      파일(생성/열기/저장)
+  Ctrl+K +S         Save All
+  Ctrl+W            현재 탭 닫기
+  Ctrl+Shift+T      닫은 탭 열기
+  Ctrl+K W          Close Group
+  Ctrl+K Ctrl+W     모든 창 닫기
+  Ctrl+Shift+S      다른 이름으로 저장
+  unassigned        Close Others
+  unassigned        Close Other Groups
+  unassigned        Close Group to Left
+  unassigned        Close Group to Right
+  Ctrl+K Enter      Keep Open
+  Ctrl+Tab          Open Next
+  Ctrl+Shift+Tab    Open Previous
+  Ctrl+K P          Copy Path of Active File
+  Ctrl+K R          Reveal Active File in Windows
+  Ctrl+K O          Show Opened File in New Window
+  unassigned        Compare Opened File With
+
+보이기
+
+  F11               전체 화면 토글
+  Ctrl+K Z          좀더 전체 화면
+  Escape Escape     좀더 전체 화면 나가기
+  Ctrl+(-/=/Numpad0)화면배율(-/+/100%)
+  Ctrl+B            사이드 영역(좌) 토글
+  Ctrl+Shift+E      Show Explorer / Toggle Focus
+  Ctrl+Shift+D      Show Debug
+  Ctrl+Shift+G      Show Git
+  Ctrl+Shift+X      Show Extensions
+  Ctrl+Shift+U      Show Output
+  Ctrl+Q            Quick Open View
+  Ctrl+Shift+F      Show Search
+  Ctrl+Shift+H      Replace in Files
+  Ctrl+Shift+J      Toggle Search Details
+  Ctrl+Shift+C      Open New Command Prompt
+  Ctrl+Shift+V      Toggle Markdown Preview
+  Ctrl+K V          Open Preview to the Side
+  Ctrl+`            Toggle Integrated Terminal
+
+Preferences
+
+  unassigned    Open User Settings
+  unassigned    Open Workspace Settings
+  Ctrl+K Ctrl+S Open Keyboard Shortcuts
+  unassigned    Open User Snippets
+  Ctrl+K Ctrl+T Select Color Theme
+  unassigned    Configure Display Language
+
+Debug
+
+  F9            Toggle Breakpoint
+  F5            Start
+  F5            Continue
+  Ctrl+F5       Start (without debugging)
+  F6            Pause
+  F11           Step Into
+  Shift+F11     Step Out
+  F10           Step Over
+  Shift+F5      Stop
+  Ctrl+K Ctrl+I Show Hover
+
+Tasks
+
+  Ctrl+Shift+B  Run Build Task
+  unassigned    Run Test Task
+
+Extensions
+
+  unassigned    Install Extension
+  unassigned    Show Installed Extensions
+  unassigned    Show Outdated Extensions
+  unassigned    Show Recommended Extensions
+  unassigned    Show Popular Extensions
+  unassigned    Update All Extensions
