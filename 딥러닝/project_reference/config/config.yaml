@@ -1,0 +1,66 @@
+# config.yaml
+
+# 기본 설정
+version: 1.0  # 설정 파일 버전
+
+# 공통 파라미터 (모델과 훈련에 필요한 공통 설정)
+common:
+  batch_size: 32  # 공통 배치 크기
+  learning_rate: 0.001  # 공통 학습률
+  loss_function: 'MSELoss'  # 공통 손실 함수
+  num_epochs: 50  # 공통 에폭 수
+
+# 데이터 관련 설정
+data:
+  raw_data_path: '../data/raw/train_data.csv'  # 원본 데이터 경로
+  processed_data_path: '../data/processed/train_data.csv'  # 전처리된 데이터 경로
+  test_data_path: '../data/raw/test_data.csv'  # 테스트 데이터 경로
+  preprocessing:
+    dropna: true  # 결측치가 있는 행을 제거할지 여부
+    normalize: true  # 데이터 정규화 적용 여부
+
+# 모델별 설정 (공통 파라미터를 기반으로 세부 사항만 조정 가능)
+models:
+  model_a:
+    batch_size: 64  # 배치 크기 조정 (공통에서 오버라이드)
+    learning_rate: 0.001  # 학습률 (공통에서 오버라이드)
+    optimizer: 'Adam'  # 옵티마이저 설정
+    input_dim: 10  # 입력 차원 수
+    output_dim: 1  # 출력 차원 수
+    architecture:  # 모델 아키텍처 정의
+      layers:
+        - type: Linear
+          units: 50
+          activation: ReLU
+        - type: Linear
+          units: 1
+          activation: None
+  model_b:
+    batch_size: 32  # 배치 크기 조정 (공통에서 오버라이드)
+    learning_rate: 0.0001  # 학습률 조정 (공통에서 오버라이드)
+    optimizer: 'SGD'  # 다른 옵티마이저 설정
+    input_dim: 10  # 입력 차원 수
+    output_dim: 2  # 출력 차원 수
+    architecture:
+      layers:
+        - type: Linear
+          units: 100
+          activation: ReLU
+        - type: Linear
+          units: 2
+          activation: Softmax
+
+# 훈련 관련 설정 (공통 파라미터를 상속하되, 필요 시 수정)
+training:
+  loss_function: ${common.loss_function}
+  num_epochs: ${common.num_epochs}
+  logging:
+    enabled: true
+    log_file: '../logs/training.log'
+
+# 평가 관련 설정
+evaluation:
+  metrics:
+    - accuracy
+    - f1_score
+    - mean_squared_error

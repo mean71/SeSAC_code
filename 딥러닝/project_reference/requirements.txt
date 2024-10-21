@@ -1,0 +1,17 @@
+# 의존성 라이브러리 목록 
+# 라이브러리==버전
+numpy==
+pandas==
+scikit-learn==
+tensorflow==
+torch==
+torchvision==
+matplotlib==
+seaborn==
+pyyaml==
+
+# model a
+numpy==
+torch==
+matplotlib==
+pyyaml==
