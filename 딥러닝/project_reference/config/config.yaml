@@ -12,9 +12,9 @@ common:
 
 # 데이터 관련 설정
 data:
-  raw_data_path: '../data/raw/train_data.csv'  # 원본 데이터 경로
-  processed_data_path: '../data/processed/train_data.csv'  # 전처리된 데이터 경로
-  test_data_path: '../data/raw/test_data.csv'  # 테스트 데이터 경로
+  raw_data_path: '../data/raw/train_data.txt'  # 원본 데이터 경로
+  processed_data_path: '../data/processed/train_data.txt'  # 전처리된 데이터 경로
+  test_data_path: '../data/raw/test_data.txt'  # 테스트 데이터 경로
   preprocessing:
     dropna: true  # 결측치가 있는 행을 제거할지 여부
     normalize: true  # 데이터 정규화 적용 여부
