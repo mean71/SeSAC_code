@@ -14,8 +14,7 @@ pprint
 '''
 
 def debug_shell(line_window = 5):
-    """
-    Print the usual traceback information, followed by a listing of all the local variables in each frame.
+    """Print the usual traceback information, followed by a listing of all the local variables in each frame.
     일반적인 역추적 정보를 인쇄한 다음 각 프레임의 모든 지역 변수 목록을 인쇄합니다.
     """
     try:

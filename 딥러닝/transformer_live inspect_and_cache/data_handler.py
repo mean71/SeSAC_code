@@ -1,11 +1,11 @@
 """
-데이터 처리 스크립트. 
+Data handling scripts. 
 
-1. 클래스 어휘: 특수 토큰/단어 색인을 생성/처리하거나 그 반대로 생성/처리하기 위한 어휘 래퍼 클래스입니다. 
-2. 클래스 LanguagePair: 언어 쌍의 문장에 대한 래퍼 클래스입니다.
+1. class Vocabulary: Vocabulary wrapper class for generating/handling special tokens/index to word, and vice versa, etc,... 
+2. Class LanguagePair: Wrapper class for sentences of language pair. 
 """
-import torch
-from collections import defaultdict
+import torch 
+from collections import defaultdict 
 from torch.utils.data import DataLoader, TensorDataset
 from typing import Any, Dict, List, Tuple, Union
 
@@ -15,22 +15,22 @@ develop = True
 
 class Vocabulary:
     """
-주어진 순차 데이터세트의 어휘를 처리합니다.
+    Handles vocabulary of a given sequential dataset. 
 
-    인수:
-        Coverage (float): 토큰이 OOV로 간주되어야 하는지 여부를 결정하는 커버리지입니다.
-    속성:
-        word2index (dict[str, int]): 토큰을 키로 포함하고 토큰의 인덱스를 값으로 포함하는 사전입니다.
-        index2word (dict[int, str]): 토큰의 인덱스를 키로, 토큰을 값으로 포함하는 사전입니다.
-        vocab_size (int): 어휘 크기를 나타내는 정수입니다.
-    행동 양식:
+    Args:
+        coverage (float): Coverage for determining whether the token shall be considered as OOV or not. 
+    Attributes:
+        word2index (dict[str, int]): Dict containing token as key, and index of the token as value. 
+        index2word (dict[int, str]): Dict containing index of token as key, and the token as value. 
+        vocab_size (int): Integer representing the vocabulary size. 
+    Methods:
         
-    변수:
+    Variables: 
         SPECIAL_TOKENS
-        EOS_IDX, EOS
+        EOS_IDX, EOS 
         SOS_IDX, SOS
-        PAD_IDX, 패드
-        OOV_IDX, OOV
+        PAD_IDX, PAD 
+        OOV_IDX, OOV 
     """
     EOS: str = '[EOS]'
     SOS: str = '[SOS]'
@@ -49,11 +49,12 @@ class Vocabulary:
         self.pad_idx: int = Vocabulary.SPECIAL_TOKENS.index(Vocabulary.PAD)
         self.oov_idx: int = Vocabulary.SPECIAL_TOKENS.index(Vocabulary.OOV)
 
+
     def add_word(self, token: str):
         """
         Adds a token to the vocabulary if it doesn't exists. 
-        If it exists, do nothing.
-        
+        If it exists, do nothing. 
+
         Args:
             token (str): The token to be added. 
         """
@@ -69,22 +70,32 @@ class Vocabulary:
         for word_idx, (word, freq) in enumerate(vocab_list):
             if word not in self.word2index:
                 self.word2index[word] = word_idx
-                self.index2word[word_idx] = word
+                self.index2word[word_idx] = word 
         
         for token in Vocabulary.SPECIAL_TOKENS:
             assert self.word2index[token] == Vocabulary.SPECIAL_TOKENS.index(token), debug_shell()
 
-    def sentence2tensor(self,
-            sentence: List[str],
-            tokenize_strategy: str = 'split',
+        self.word2index = dict(self.word2index)
+        self.index2word = dict(self.index2word) 
+        self.word2freq = dict(self.word2freq)
+
+    def word2idx(self, token):
+        if token in self.word2index:
+            return self.word2index[token] 
+        else:
+            return self.oov_idx 
+
+    def sentence2tensor(self, 
+            sentence: List[str], 
+            tokenize_strategy: str = 'split', 
     ) -> torch.tensor:
         tokens: List[str] = tokenize(sentence, tokenize_strategy)
 
         return torch.tensor(
-            [self.word2index[token] for token in tokens],
+            [self.word2idx(token) for token in tokens],
             dtype = torch.long
         )
-    
+
     def tensor2sentence(self, 
             tensor: torch.tensor, 
             clean: bool = False, 
@@ -119,6 +130,7 @@ class LanguagePair:
                 Those are sunflowers.	それはひまわりです。	CC-BY 2.0 (France) Attribution: tatoeba.org #441940 (CK) & #205407 (arnab)
                 Tom bought a new car.	トムは新車を買った。	CC-BY 2.0 (France) Attribution: tatoeba.org #1026984 (CK) & #2733633 (tommy_san)
                 This watch is broken.	この時計は壊れている。	CC-BY 2.0 (France) Attribution: tatoeba.org #58929 (CK) & #221604 (bunbuku)
+
     """
     def __init__(
             self, 
@@ -173,7 +185,7 @@ class LanguagePair:
             res: torch.tensor = torch.zeros(len(sent_list), max_sentence_length, dtype = torch.long)
             
             for idx, sent in enumerate(sent_list):
-                lst: List[int] = [vocab.word2index[token] for token in sent] + [vocab.pad_idx for _ in range(max_sentence_length - len(sent))]
+                lst: List[int] = [vocab.word2idx(token) for token in sent] + [vocab.pad_idx for _ in range(max_sentence_length - len(sent))]
                 assert len(lst) == max_sentence_length
                 
                 res[idx] = torch.tensor(lst, dtype = torch.long)
@@ -210,31 +222,32 @@ class LanguagePair:
 
         self.data = dataloader 
 
-    @inspect_and_cache
-    @staticmethod
-    def initiate_from_file(data_file_path: str) -> Any:
-        """
-        From the given string that contains the path to file, open the file, read, and split each lines by a delimeter. 
-        """
-        source_sentences = []
-        target_sentences = []
+    
+    
+@inspect_and_cache
+def initiate_from_file(data_file_path: str) -> LanguagePair:
+    """
+    From the given string that contains the path to file, open the file, read, and split each lines by a delimeter. 
+    """
+    source_sentences = []
+    target_sentences = []
 
-        if develop:
-            print(f'Initiated making LanguagePair instance from {data_file_path}')
+    if develop:
+        print(f'Initiated making LanguagePair instance from {data_file_path}')
 
-        with open(data_file_path, 'r', encoding = 'utf-8') as f:
-            for line in f.readlines():
-                tab_seperated = line.strip().split('\t')
-        
-                if len(tab_seperated) == 2:
-                    source, target = tab_seperated
-                else:
-                    source, target, *license_info = line.strip().split('\t')
-                source_sentences.append(source)
-                target_sentences.append(target)
+    with open(data_file_path, 'r', encoding = 'utf-8') as f:
+        for line in f.readlines():
+            tab_seperated = line.strip().split('\t')
 
-        return LanguagePair(source_sentences, target_sentences)
-        
+            if len(tab_seperated) == 2:
+                source, target = tab_seperated
+            else:
+                source, target, *license_info = line.strip().split('\t')
+            source_sentences.append(source)
+            target_sentences.append(target)
+
+    return LanguagePair(source_sentences, target_sentences)
+    
 
 def tokenize(sentence: str, tokenize_strategy: str = 'split') -> List[str]:
     """
@@ -253,10 +266,13 @@ def tokenize(sentence: str, tokenize_strategy: str = 'split') -> List[str]:
     else:
         NotImplemented
 
+
 if __name__ == '__main__':
     from config import en2fr_data
     from debugger import debug_shell 
     
-    en2fr: LanguagePair = LanguagePair.initiate_from_file(en2fr_data)
+    en2fr: LanguagePair = initiate_from_file(en2fr_data)
     
     debug_shell()
+
+    

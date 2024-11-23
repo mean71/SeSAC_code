@@ -291,15 +291,23 @@ def collate_fn_language(batch, source_vocab, target_vocab):
     return input_padded, target_padded
 
 if __name__ == '__main__':
-    # (train, valid, test), vocab = create_integer_sequence_dataset()
+    # 데이터셋을 생성하는 함수 호출
+    # 'kor.txt' 파일을 읽어 (train, valid, test) 데이터와 source_vocab, target_vocab을 생성
+    (train_data, valid_data, test_data), source_vocab, target_vocab = create_lang_pair('kor.txt')
 
-    # for x, y in train:
-    #     print(x[0], y[0])
-    #     break 
-
-    (train, valid, test), source_vocab, target_vocab = create_lang_pair('kor.txt')
-
-    for x, y in train:
-        print(x[0])
-        print(y[0])
-        break 
+    # 학습 데이터에서 첫 번째 샘플을 출력하는 루프
+    for input_sequence, target_sequence in train_data:
+        # 첫 번째 입력 시퀀스 출력
+        print("첫 번째 입력 시퀀스 (Input Sequence):", input_sequence[0].tolist())  # 첫 번째 입력 시퀀스의 값을 리스트로 변환하여 출력
+        print("첫 번째 타겟 시퀀스 (Target Sequence):", target_sequence[0].tolist())  # 첫 번째 타겟 시퀀스의 값을 리스트로 변환하여 출력
+        
+        # 각 시퀀스의 의미를 설명
+        print("\n# 각 시퀀스의 의미")
+        print("- 입력 시퀀스는 모델에 주어진 단어의 인덱스를 나타냅니다.")
+        print("- 타겟 시퀀스는 모델이 예측해야 하는 정답 단어의 인덱스를 나타냅니다.")
+        
+        # 더 많은 정보를 출력하기 위해 각 시퀀스의 길이도 출력
+        print(f"\n입력 시퀀스의 길이: {len(input_sequence[0])} (단어 수)")
+        print(f"타겟 시퀀스의 길이: {len(target_sequence[0])} (단어 수)")
+        
+        break  # 첫 번째 샘플만 출력하고 루프 종료
